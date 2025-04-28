@@ -58,6 +58,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -144,6 +147,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -228,6 +234,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 7803345591212753084}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &7803345591212753084
 AudioSource:
@@ -240,6 +251,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -381,6 +393,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 552356511557082048}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &552356511557082048
 AudioSource:
@@ -393,6 +410,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -536,6 +554,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -624,6 +645,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -707,6 +731,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -787,6 +814,11 @@ MonoBehaviour:
   accuracyError: 0.01
   shot: {fileID: 4436360961213074141}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &4436360961213074141
 AudioSource:
@@ -799,6 +831,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8b58d9c41e64cb244a3ae7d13806b618, type: 3}
+  m_Resource: {fileID: 8300000, guid: 8b58d9c41e64cb244a3ae7d13806b618, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -942,6 +975,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1023,6 +1059,11 @@ MonoBehaviour:
   accuracyError: 0.01
   shot: {fileID: 2119084581778940175}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &2119084581778940175
 AudioSource:
@@ -1035,6 +1076,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -1178,6 +1220,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1264,6 +1309,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1345,6 +1393,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 2101923554521185411}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &2101923554521185411
 AudioSource:
@@ -1357,6 +1410,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1502,6 +1556,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1585,6 +1642,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1674,6 +1734,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1720,6 +1783,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &660393399168803367
 GameObject:
   m_ObjectHideFlags: 0
@@ -1781,6 +1846,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1827,6 +1895,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &713108985402652069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1883,6 +1953,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 8494788598985581756}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &8494788598985581756
 AudioSource:
@@ -1895,6 +1970,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2041,6 +2117,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2087,6 +2166,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &836039547565566295
 GameObject:
   m_ObjectHideFlags: 0
@@ -2143,6 +2224,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 2450021343026982019}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &2450021343026982019
 AudioSource:
@@ -2155,6 +2241,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2298,6 +2385,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2381,6 +2471,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2464,6 +2557,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2550,6 +2646,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2596,6 +2695,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &1010087240594288306
 GameObject:
   m_ObjectHideFlags: 0
@@ -2654,6 +2755,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2739,6 +2843,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2820,6 +2927,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 351352539933975863}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &351352539933975863
 AudioSource:
@@ -2832,6 +2944,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2978,6 +3091,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3024,6 +3140,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &1141147085248520532
 GameObject:
   m_ObjectHideFlags: 0
@@ -3082,6 +3200,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3163,6 +3284,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 6101908262028429846}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &6101908262028429846
 AudioSource:
@@ -3175,6 +3301,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3320,6 +3447,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3401,6 +3531,11 @@ MonoBehaviour:
   accuracyError: 0.01
   shot: {fileID: 65361563802552620}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &65361563802552620
 AudioSource:
@@ -3413,6 +3548,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -3559,6 +3695,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3605,6 +3744,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &1354763582160736963
 GameObject:
   m_ObjectHideFlags: 0
@@ -3666,6 +3807,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3712,6 +3856,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &1485527523484740888
 GameObject:
   m_ObjectHideFlags: 0
@@ -3772,6 +3918,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3857,6 +4006,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3938,6 +4090,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 5703560983086526660}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &5703560983086526660
 AudioSource:
@@ -3950,6 +4107,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -4093,6 +4251,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4177,6 +4338,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 2970338976118957317}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &2970338976118957317
 AudioSource:
@@ -4189,6 +4355,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -4332,6 +4499,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4415,6 +4585,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4501,6 +4674,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4584,6 +4760,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4665,6 +4844,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 4928519962274155703}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &4928519962274155703
 AudioSource:
@@ -4677,6 +4861,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -4820,6 +5005,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4901,6 +5089,11 @@ MonoBehaviour:
   accuracyError: 0.01
   shot: {fileID: 1410286688901422956}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &1410286688901422956
 AudioSource:
@@ -4913,6 +5106,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -5056,6 +5250,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5142,6 +5339,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5188,6 +5388,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &2262825387324676553
 GameObject:
   m_ObjectHideFlags: 0
@@ -5248,6 +5450,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5333,6 +5538,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5414,6 +5622,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 6512775869456191127}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &6512775869456191127
 AudioSource:
@@ -5426,6 +5639,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -5567,6 +5781,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 5623685416632537219}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &5623685416632537219
 AudioSource:
@@ -5579,6 +5798,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -5676,7 +5896,6 @@ GameObject:
   - component: {fileID: 4455843996212401118}
   - component: {fileID: 123967520}
   - component: {fileID: 123967523}
-  - component: {fileID: 123967521}
   - component: {fileID: 123967522}
   m_Layer: 0
   m_Name: BattleshipType1
@@ -5762,6 +5981,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a34555d90da67784bbe1680076645e36, type: 3}
+  m_Resource: {fileID: 8300000, guid: a34555d90da67784bbe1680076645e36, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -5847,20 +6067,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &123967521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2842434893564657039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 610d3b2cb45991148abdff3058e6e057, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shipRb: {fileID: 123967520}
-  shipSpeed: 5000000
 --- !u!114 &123967522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5882,8 +6088,7 @@ MonoBehaviour:
   Defense: 500
   CritRate: 5
   extraLives: 0
-  Explosion: {fileID: 1099838043991838807, guid: 0e6b37ee9ce548f469e5c719ee44f294,
-    type: 3}
+  Explosion: {fileID: 1099838043991838807, guid: 0e6b37ee9ce548f469e5c719ee44f294, type: 3}
   destroyedObject: {fileID: 0}
   smoke: {fileID: 0}
   onFire: 0
@@ -5893,6 +6098,7 @@ MonoBehaviour:
   hitSound: {fileID: 0}
   fireSound: {fileID: 0}
   invulnerable: 0
+  invulnerableTimer: 0
 --- !u!1 &2877087312455697905
 GameObject:
   m_ObjectHideFlags: 0
@@ -5951,6 +6157,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6037,6 +6246,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6125,6 +6337,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6211,6 +6426,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6257,6 +6475,8 @@ MonoBehaviour:
   firingRange: 2000
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &3170977354555037350
 GameObject:
   m_ObjectHideFlags: 0
@@ -6315,6 +6535,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6401,6 +6624,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6485,6 +6711,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 3054945923994486523}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &3054945923994486523
 AudioSource:
@@ -6497,6 +6728,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -6638,6 +6870,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 6888565166586696457}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &6888565166586696457
 AudioSource:
@@ -6650,6 +6887,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -6795,6 +7033,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6880,6 +7121,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6963,6 +7207,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -7046,6 +7293,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -7135,6 +7385,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -7181,6 +7434,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &3692454685443541333
 GameObject:
   m_ObjectHideFlags: 0
@@ -7241,6 +7496,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -7324,6 +7582,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -7407,6 +7668,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -7495,6 +7759,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -7580,6 +7847,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -7663,6 +7933,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -7746,6 +8019,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -7832,6 +8108,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -7916,6 +8195,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 995729949766198894}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &995729949766198894
 AudioSource:
@@ -7928,6 +8212,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -8074,6 +8359,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -8120,6 +8408,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &4291315669091070656
 GameObject:
   m_ObjectHideFlags: 0
@@ -8180,6 +8470,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -8263,6 +8556,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -8348,6 +8644,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -8431,6 +8730,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -8517,6 +8819,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -8606,6 +8911,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -8652,6 +8960,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &4591530754574289755
 GameObject:
   m_ObjectHideFlags: 0
@@ -8708,6 +9018,11 @@ MonoBehaviour:
   accuracyError: 0.01
   shot: {fileID: 6348621888671569723}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &6348621888671569723
 AudioSource:
@@ -8720,6 +9035,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -8863,6 +9179,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -8946,6 +9265,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -9030,6 +9352,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 376999262420460075}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &376999262420460075
 AudioSource:
@@ -9042,6 +9369,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -9188,6 +9516,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -9234,6 +9565,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &4756632828713670834
 GameObject:
   m_ObjectHideFlags: 0
@@ -9295,6 +9628,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -9341,6 +9677,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &4796392562714196893
 GameObject:
   m_ObjectHideFlags: 0
@@ -9401,6 +9739,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -9484,6 +9825,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -9569,6 +9913,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -9652,6 +9999,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -9741,6 +10091,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -9787,6 +10140,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &4918426234996765402
 GameObject:
   m_ObjectHideFlags: 0
@@ -9843,6 +10198,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 563889422695394054}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &563889422695394054
 AudioSource:
@@ -9855,6 +10215,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -10000,6 +10361,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -10083,6 +10447,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -10166,6 +10533,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -10255,6 +10625,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -10301,6 +10674,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &5289059285615264782
 GameObject:
   m_ObjectHideFlags: 0
@@ -10357,6 +10732,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 6832896640654387910}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &6832896640654387910
 AudioSource:
@@ -10369,6 +10749,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -10512,6 +10893,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -10598,6 +10982,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -10644,6 +11031,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &5350753189888020880
 GameObject:
   m_ObjectHideFlags: 0
@@ -10700,6 +11089,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 1794124527539833604}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &1794124527539833604
 AudioSource:
@@ -10712,6 +11106,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -10857,6 +11252,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -10940,6 +11338,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -11020,6 +11421,11 @@ MonoBehaviour:
   accuracyError: 0.01
   shot: {fileID: 9012416822424993158}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &9012416822424993158
 AudioSource:
@@ -11032,6 +11438,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8b58d9c41e64cb244a3ae7d13806b618, type: 3}
+  m_Resource: {fileID: 8300000, guid: 8b58d9c41e64cb244a3ae7d13806b618, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -11175,6 +11582,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -11264,6 +11674,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -11310,6 +11723,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &5625898166483171688
 GameObject:
   m_ObjectHideFlags: 0
@@ -11371,6 +11786,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -11417,6 +11835,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &5636008636512978511
 GameObject:
   m_ObjectHideFlags: 0
@@ -11475,6 +11895,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -11558,6 +11981,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -11639,6 +12065,11 @@ MonoBehaviour:
   accuracyError: 0.01
   shot: {fileID: 4473118245780305966}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &4473118245780305966
 AudioSource:
@@ -11651,6 +12082,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -11791,6 +12223,11 @@ MonoBehaviour:
   accuracyError: 0.01
   shot: {fileID: 4829966344552943804}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &4829966344552943804
 AudioSource:
@@ -11803,6 +12240,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8b58d9c41e64cb244a3ae7d13806b618, type: 3}
+  m_Resource: {fileID: 8300000, guid: 8b58d9c41e64cb244a3ae7d13806b618, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -11944,6 +12382,11 @@ MonoBehaviour:
   accuracyError: 0.01
   shot: {fileID: 5920161002680940521}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &5920161002680940521
 AudioSource:
@@ -11956,6 +12399,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -12097,6 +12541,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 781037408292347444}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &781037408292347444
 AudioSource:
@@ -12109,6 +12558,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -12252,6 +12702,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12338,6 +12791,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12423,6 +12879,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12504,6 +12963,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 1794094430885009218}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &1794094430885009218
 AudioSource:
@@ -12516,6 +12980,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -12659,6 +13124,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12747,6 +13215,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12830,6 +13301,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12916,6 +13390,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12999,6 +13476,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13084,6 +13564,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13167,6 +13650,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13318,6 +13804,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13403,6 +13892,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13486,6 +13978,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13572,6 +14067,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13657,6 +14155,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13743,6 +14244,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13789,6 +14293,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &6843646431152952639
 GameObject:
   m_ObjectHideFlags: 0
@@ -13849,6 +14355,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13935,6 +14444,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13981,6 +14493,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &6947580721920276820
 GameObject:
   m_ObjectHideFlags: 0
@@ -14041,6 +14555,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -14126,6 +14643,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -14209,6 +14729,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -14295,6 +14818,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -14341,6 +14867,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &7402333328888424187
 GameObject:
   m_ObjectHideFlags: 0
@@ -14397,6 +14925,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 6676440715396988072}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &6676440715396988072
 AudioSource:
@@ -14409,6 +14942,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -14552,6 +15086,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -14635,6 +15172,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -14715,6 +15255,11 @@ MonoBehaviour:
   accuracyError: 0.01
   shot: {fileID: 1290498485445558855}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &1290498485445558855
 AudioSource:
@@ -14727,6 +15272,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8b58d9c41e64cb244a3ae7d13806b618, type: 3}
+  m_Resource: {fileID: 8300000, guid: 8b58d9c41e64cb244a3ae7d13806b618, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -14868,6 +15414,11 @@ MonoBehaviour:
   accuracyError: 0.01
   shot: {fileID: 5590331444892608036}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &5590331444892608036
 AudioSource:
@@ -14880,6 +15431,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -15021,6 +15573,11 @@ MonoBehaviour:
   accuracyError: 0.01
   shot: {fileID: 5524561600536061480}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &5524561600536061480
 AudioSource:
@@ -15033,6 +15590,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -15179,6 +15737,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -15225,6 +15786,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &7536322915483759068
 GameObject:
   m_ObjectHideFlags: 0
@@ -15283,6 +15846,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -15371,6 +15937,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -15457,6 +16026,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -15503,6 +16075,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &7636692592626643123
 GameObject:
   m_ObjectHideFlags: 0
@@ -15561,6 +16135,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -15649,6 +16226,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -15730,6 +16310,11 @@ MonoBehaviour:
   accuracyError: 0.01
   shot: {fileID: 4068081794814612405}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &4068081794814612405
 AudioSource:
@@ -15742,6 +16327,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -15888,6 +16474,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -15934,6 +16523,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &7757200330781673514
 GameObject:
   m_ObjectHideFlags: 0
@@ -15992,6 +16583,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -16081,6 +16675,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -16127,6 +16724,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &7785757872116964668
 GameObject:
   m_ObjectHideFlags: 0
@@ -16183,6 +16782,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 6739253395503911909}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &6739253395503911909
 AudioSource:
@@ -16195,6 +16799,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -16336,6 +16941,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 9102670632690129410}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &9102670632690129410
 AudioSource:
@@ -16348,6 +16958,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -16489,6 +17100,11 @@ MonoBehaviour:
   accuracyError: 0.01
   shot: {fileID: 1748030205955190723}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &1748030205955190723
 AudioSource:
@@ -16501,6 +17117,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -16642,6 +17259,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 3506869710551093668}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &3506869710551093668
 AudioSource:
@@ -16654,6 +17276,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -16797,6 +17420,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -16886,6 +17512,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -16932,6 +17561,8 @@ MonoBehaviour:
   firingRange: 2000
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &8335922276574280621
 GameObject:
   m_ObjectHideFlags: 0
@@ -16992,6 +17623,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -17073,6 +17707,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 5577921231147239883}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &5577921231147239883
 AudioSource:
@@ -17085,6 +17724,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -17231,6 +17871,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -17277,6 +17920,8 @@ MonoBehaviour:
   firingRange: 2000
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &8465373877630669096
 GameObject:
   m_ObjectHideFlags: 0
@@ -17333,6 +17978,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 8893125839681875445}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &8893125839681875445
 AudioSource:
@@ -17345,6 +17995,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -17491,6 +18142,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -17537,6 +18191,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &8573111616456671667
 GameObject:
   m_ObjectHideFlags: 0
@@ -17597,6 +18253,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -17683,6 +18342,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -17729,6 +18391,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &8739895251991112789
 GameObject:
   m_ObjectHideFlags: 0
@@ -17787,6 +18451,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -17870,6 +18537,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -17951,6 +18621,11 @@ MonoBehaviour:
   accuracyError: 0.0001
   shot: {fileID: 2490730585514445538}
   rateOfFire: 0
+  rofTimer: 0
+  overheatTimer: 0
+  overheated: 0
+  overheatResetTimer: 0
+  overheatedRoF: 0
   killCounter: {fileID: 0}
 --- !u!82 &2490730585514445538
 AudioSource:
@@ -17963,6 +18638,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a7267d53db4c5848972918c1a5a2144, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -18106,6 +18782,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -18195,6 +18874,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -18241,6 +18923,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &8901455326708176007
 GameObject:
   m_ObjectHideFlags: 0
@@ -18302,6 +18986,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -18348,6 +19035,8 @@ MonoBehaviour:
   firingRange: 2000
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &8945805249577004813
 GameObject:
   m_ObjectHideFlags: 0
@@ -18409,6 +19098,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -18455,6 +19147,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &9023634540408466409
 GameObject:
   m_ObjectHideFlags: 0
@@ -18515,6 +19209,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -18598,6 +19295,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -18684,6 +19384,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -18773,6 +19476,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -18819,6 +19525,8 @@ MonoBehaviour:
   firingRange: 800
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
+  hasTimedFuze: 0
+  estimatedTimeToBurst: 0
 --- !u!1 &9197133758971224208
 GameObject:
   m_ObjectHideFlags: 0
@@ -18879,6 +19587,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -18962,6 +19673,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -18998,334 +19712,269 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3186731959538214709}
     m_Modifications:
-    - target: {fileID: 460610285355520043, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 460610285355520043, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 524960683695050347, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 524960683695050347, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 833036033714742194, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 833036033714742194, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1230886929688673737, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 1230886929688673737, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_Name
       value: JpBattleship3D
       objectReference: {fileID: 0}
-    - target: {fileID: 1565407005656182689, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 1565407005656182689, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1765989947516614417, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 1765989947516614417, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1910865467767639885, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 1910865467767639885, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1961031118581879957, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 1961031118581879957, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2438314995266409232, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 2438314995266409232, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2784171622116340160, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 2784171622116340160, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3602341808330981572, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 3602341808330981572, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3731875211483321932, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 3731875211483321932, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3773527367317172927, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 3773527367317172927, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_LocalPosition.y
       value: 7.2
       objectReference: {fileID: 0}
-    - target: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
       objectReference: {fileID: 0}
-    - target: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0.7071068
       objectReference: {fileID: 0}
-    - target: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
       objectReference: {fileID: 0}
-    - target: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3926533587733715950, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 3926533587733715950, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4098911924428008610, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 4098911924428008610, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4153539046520141888, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 4153539046520141888, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4336799300321088414, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 4336799300321088414, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4491807555417308553, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 4491807555417308553, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7322648
       objectReference: {fileID: 0}
-    - target: {fileID: 4491807555417308553, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 4491807555417308553, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0.000000089406946
       objectReference: {fileID: 0}
-    - target: {fileID: 4491807555417308553, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 4491807555417308553, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0.000000089406946
       objectReference: {fileID: 0}
-    - target: {fileID: 4491807555417308553, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 4491807555417308553, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.68101996
       objectReference: {fileID: 0}
-    - target: {fileID: 4491807555417308553, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 4491807555417308553, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 85.847
       objectReference: {fileID: 0}
-    - target: {fileID: 4703219658164410845, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 4703219658164410845, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5269424590639587851, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 5269424590639587851, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5338179950279102543, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 5338179950279102543, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5410749530375952740, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 5410749530375952740, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5621100822678569852, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 5621100822678569852, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5737252798622906263, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 5737252798622906263, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6295815625785781994, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 6295815625785781994, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6450121155850342169, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 6450121155850342169, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6988676210407120202, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 6988676210407120202, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7735295796343560537, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 7735295796343560537, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8281071787999990417, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 8281071787999990417, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8840144690121320007, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 8840144690121320007, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8897622352738320091, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 8897622352738320091, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8911976720197444627, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 8911976720197444627, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8997609300514768879, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 8997609300514768879, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9081642179473381131, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 9081642179473381131, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9112160796258155241, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 9112160796258155241, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9122414146680022899, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - target: {fileID: 9122414146680022899, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 9093875559807734110, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - targetCorrespondingSourceObject: {fileID: 9093875559807734110, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1224757635535621833}
-    - targetCorrespondingSourceObject: {fileID: 1261400998685017466, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - targetCorrespondingSourceObject: {fileID: 1261400998685017466, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1966391761866388544}
-    - targetCorrespondingSourceObject: {fileID: 8435930646439563597, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - targetCorrespondingSourceObject: {fileID: 8435930646439563597, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3679244884249050711}
-    - targetCorrespondingSourceObject: {fileID: 7295972767011572322, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - targetCorrespondingSourceObject: {fileID: 7295972767011572322, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3252434584455143355}
-    - targetCorrespondingSourceObject: {fileID: 5768408718565552912, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - targetCorrespondingSourceObject: {fileID: 5768408718565552912, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9084448105950476594}
-    - targetCorrespondingSourceObject: {fileID: 6257634969586041907, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - targetCorrespondingSourceObject: {fileID: 6257634969586041907, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1471456885740799588}
-    - targetCorrespondingSourceObject: {fileID: 4275072461275056793, guid: a0a22b5b0505bc647b0a1809eea79c42,
-        type: 3}
+    - targetCorrespondingSourceObject: {fileID: 4275072461275056793, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4772208705439597470}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
 --- !u!4 &60115609765146852 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5768408718565552912, guid: a0a22b5b0505bc647b0a1809eea79c42,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 5768408718565552912, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
   m_PrefabInstance: {fileID: 5825428103150453748}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &436715192699668423 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6257634969586041907, guid: a0a22b5b0505bc647b0a1809eea79c42,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 6257634969586041907, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
   m_PrefabInstance: {fileID: 5825428103150453748}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2723096423066292921 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8435930646439563597, guid: a0a22b5b0505bc647b0a1809eea79c42,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 8435930646439563597, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
   m_PrefabInstance: {fileID: 5825428103150453748}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &3381073422526059178 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 9093875559807734110, guid: a0a22b5b0505bc647b0a1809eea79c42,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 9093875559807734110, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
   m_PrefabInstance: {fileID: 5825428103150453748}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &3861998779993049494 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7295972767011572322, guid: a0a22b5b0505bc647b0a1809eea79c42,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 7295972767011572322, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
   m_PrefabInstance: {fileID: 5825428103150453748}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &4708925146334611086 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 1261400998685017466, guid: a0a22b5b0505bc647b0a1809eea79c42,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 1261400998685017466, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
   m_PrefabInstance: {fileID: 5825428103150453748}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7211476358272818269 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 3804517442267832233, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
   m_PrefabInstance: {fileID: 5825428103150453748}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7749578121237924205 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4275072461275056793, guid: a0a22b5b0505bc647b0a1809eea79c42,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 4275072461275056793, guid: a0a22b5b0505bc647b0a1809eea79c42, type: 3}
   m_PrefabInstance: {fileID: 5825428103150453748}
   m_PrefabAsset: {fileID: 0}

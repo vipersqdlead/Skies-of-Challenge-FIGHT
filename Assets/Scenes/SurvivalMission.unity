@@ -1164,7 +1164,7 @@ MonoBehaviour:
   - {fileID: 8324227627610284351, guid: cbef9b9261689d04391a4fc4ec1d58ed, type: 3}
   - {fileID: 6185050561958779977, guid: 926e5bc3cf0dc8444b80e3a862932dba, type: 3}
   - {fileID: 582407167203988666, guid: 7d82c0ecd02f5f643a6f3763bd0e0786, type: 3}
-  - {fileID: 6185050561958779977, guid: 70c6069e060c81e4caf045c3da900935, type: 3}
+  - {fileID: 5795742398092081329, guid: d4d225d743a0fdb49aae47ed2783d968, type: 3}
   - {fileID: 6185050561958779977, guid: 601f4176bc3bae24985022e41f0b98b1, type: 3}
   - {fileID: 6185050561958779977, guid: 41cc2f3d3781b3e4a840658cbcf7ab80, type: 3}
   - {fileID: 6185050561958779977, guid: cdf64bda3c002384c85877294dca9965, type: 3}
@@ -1176,6 +1176,7 @@ MonoBehaviour:
   - {fileID: 8324227627610284351, guid: 7bfe8639ecb090e4ea742e7a750c8c72, type: 3}
   - {fileID: 8324227627610284351, guid: 3434aa12a9f07134cbfeeb0a49805bf1, type: 3}
   - {fileID: 844937897969581019, guid: b9a3b8da6d0bde44ab5a33b9f5436e3b, type: 3}
+  - {fileID: 1540922269036293049, guid: 388d51c078bdff347b06ad904ac6f4b2, type: 3}
   player: {fileID: 0}
   status: {fileID: 614393189}
   waveSpawner: {fileID: 614393190}
