@@ -292,13 +292,7 @@ public class FlightModel : MonoBehaviour
     public bool brakeInput;
     void CheckFlapsAndBrakes()
     {
-        if (brakeInput && Input.GetAxis("Throttle") > 0)
-        {
-            flaps = true;
-            airbrake = false;
-            return;
-        }
-        else if(brakeInput)
+        if(brakeInput)
         {
             flaps = true;
             airbrake = true;

@@ -6,48 +6,99 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerInputs : MonoBehaviour
 {
-    public FlightModel playerControls;
-    public EngineControl engineControls;
-    public float ThrottleIncrement = 1f;
+    [Header("References")]
+    public Transform planeTransform;
+    public Camera playerCamera;
+    public float cursorDistance = 50f; // Distance in world units from plane
+    public Transform target;
 
-    void Awake()
+    [Header("Cursor Settings")]
+    public float sensitivity = 5f;  // Mouse sensitivity
+    public float maxCursorMovement = 200f; // Max cursor movement in pixels (like a screen limit)
+    Vector2 mouseDelta;
+
+    [Header("Debug")]
+    public Transform cursorVisual; // Optional: a dummy object to show the targetWorldPosition
+
+    private Vector2 currentCursorOffset = Vector2.zero; // Cursor position offset from center (in screen space)
+    public Vector3 targetWorldPosition { get; private set; }
+
+    private void Awake()
     {
-        playerControls = GetComponent<FlightModel>();
-        engineControls = GetComponent<EngineControl>();
+        planeTransform = transform;
+        playerCamera = Camera.main;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        ThrottleControl();
-        AxisControls();
-    }
-
-    private void ThrottleControl()
-    {
-        engineControls.SetThrottle(Input.GetAxis("Throttle") * Time.deltaTime);
-        if(Input.GetKey("joystick button 4") || Input.GetKey(KeyCode.S))
+        if(HasMouseMoved())
         {
-            playerControls.brakeInput = true;
+            UpdateCursorOffset();
+            MoveTargetAround();
+            //UpdateTargetWorldPosition();
         }
-        else
+    }
+
+    private bool HasMouseMoved()
+    {
+        float mouseX = Input.GetAxis("Mouse X");
+        float mouseY = Input.GetAxis("Mouse Y");
+        return Mathf.Abs(mouseX) > 0.001f || Mathf.Abs(mouseY) > 0.001f;
+    }
+
+    public void MoveTargetAround()
+    {
+        target.parent.rotation = Quaternion.Euler(target.parent.rotation.x + (mouseDelta.x * Time.deltaTime * 60f), target.parent.rotation.y + (mouseDelta.y * Time.deltaTime * 60f), 0);
+        targetWorldPosition = target.position;
+    }
+
+    private void UpdateCursorOffset()
+    {
+        float mouseX = Input.GetAxis("Mouse X");
+        float mouseY = Input.GetAxis("Mouse Y");
+
+        mouseDelta = new Vector2(mouseX, mouseY) * sensitivity;
+
+        // Only add delta if there is actual movement
+        if (mouseDelta.sqrMagnitude > 0.0001f)
         {
-            playerControls.brakeInput = false;
+            currentCursorOffset += mouseDelta;
+
+            // Clamp cursor inside max movement area
+            currentCursorOffset = Vector2.ClampMagnitude(currentCursorOffset, maxCursorMovement);
         }
     }
 
-    private void AxisControls()
+    private void UpdateTargetWorldPosition()
     {
-        DampInputs();
-        playerControls.SetControlInput(new Vector3(currentInputVector.x, currentInputVector.y, -currentInputVector.z));
+        if (planeTransform == null || playerCamera == null)
+            return;
 
+        // Create a screen point from center + cursorOffset
+        Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
+        Vector3 cursorScreenPosition = screenCenter + new Vector3(currentCursorOffset.x, currentCursorOffset.y, 0f);
+
+        // Create a ray from this position
+        Ray ray = playerCamera.ScreenPointToRay(cursorScreenPosition);
+
+        // Set the target world position along the ray
+        targetWorldPosition = ray.origin + ray.direction * cursorDistance;
+
+        // Move visual cursor if assigned
+        if (cursorVisual != null)
+        {
+            cursorVisual.position = targetWorldPosition;
+        }
     }
-    public float sensitivity = 0.10f;
-
-    public Vector3 currentInputVector;
-    private Vector3 smoothVelocity;
-    void DampInputs()
+    void OnDrawGizmos()
     {
-        Vector3 inputs = new Vector3(Input.GetAxis("Pitch"), Input.GetAxis("Yaw"), Input.GetAxis("Roll"));
-        currentInputVector = Vector3.SmoothDamp(currentInputVector, inputs, ref smoothVelocity, sensitivity);
+        if (planeTransform != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(planeTransform.position, targetWorldPosition);
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
+using UnityEngine.Windows;
 
 public class AIController : MonoBehaviour , StateUser
 {
@@ -30,19 +31,12 @@ public class AIController : MonoBehaviour , StateUser
 
     [Header("Weaponry-related")]
     public GunsControl guns;
-    public bool canUseMissiles;
     [SerializeField] bool canUseCannon;
-    [SerializeField] float missileLockFiringDelay;
-    [SerializeField] float missileFiringCooldown;
-    [SerializeField] float missileMinRange;
-    [SerializeField] float missileMaxRange;
-    [SerializeField] float missileMaxFireAngle;
     [SerializeField] float bulletSpeed;
     public float cannonRange;
     [SerializeField] float cannonMaxFireAngle;
     [SerializeField] float cannonBurstLength;
     [SerializeField] float cannonBurstCooldown;
-    [SerializeField] float minMissileDodgeDistance;
     [SerializeField] float reactionDelayMin;
     [SerializeField] float reactionDelayMax;
     [SerializeField] float reactionDelayDistance;
@@ -51,9 +45,6 @@ public class AIController : MonoBehaviour , StateUser
     FlightModel targetPlane;
     Vector3 lastInput;
     public bool isRecoveringSpeed;
-
-    float missileDelayTimer;
-    float missileCooldownTimer;
 
     bool cannonFiring;
     float cannonBurstTimer;
@@ -134,7 +125,7 @@ public class AIController : MonoBehaviour , StateUser
 
     Vector3 CalculateSteering(Vector3 targetPosition)
     {
-        if (plane.target == null)
+        if (plane.target == null && targetPosition == Vector3.zero)
         {
             return new Vector3();
         }
@@ -177,49 +168,6 @@ public class AIController : MonoBehaviour , StateUser
         return input;
     }
 
-    //Vector3 GetMissileDodgePosition(float dt, Missile missile)
-    //{
-    //    dodgeTimer = Mathf.Max(0, dodgeTimer - dt);
-    //    var missilePos = missile.Rigidbody.position;
-
-    //    var dist = Mathf.Max(minMissileDodgeDistance, Vector3.Distance(missilePos, plane.rb.position));
-
-    //    //calculate dodge points
-    //    if (dodgeTimer == 0)
-    //    {
-    //        var missileForward = missile.Rigidbody.rotation * Vector3.forward;
-    //        dodgeOffsets.Clear();
-
-    //        //4 dodge points: up, down, left, right
-
-    //        dodgeOffsets.Add(new Vector3(0, dist, 0));
-    //        dodgeOffsets.Add(new Vector3(0, -dist, 0));
-    //        dodgeOffsets.Add(Vector3.Cross(missileForward, Vector3.up) * dist);
-    //        dodgeOffsets.Add(Vector3.Cross(missileForward, Vector3.up) * -dist);
-
-    //        dodgeTimer = dodgeUpdateInterval;
-    //    }
-
-    //    //select nearest dodge point
-    //    float min = float.PositiveInfinity;
-    //    Vector3 minDodge = missilePos + dodgeOffsets[0];
-
-    //    foreach (var offset in dodgeOffsets)
-    //    {
-    //        var dodgePosition = missilePos + offset;
-    //        var offsetDist = Vector3.Distance(dodgePosition, lastDodgePoint);
-
-    //        if (offsetDist < min)
-    //        {
-    //            minDodge = dodgePosition;
-    //            min = offsetDist;
-    //        }
-    //    }
-
-    //    lastDodgePoint = minDodge;
-    //    return minDodge;
-    //}
-
     public float CalculateThrottle(float minSpeed, float maxSpeed)
     {
         float input = 0;
@@ -246,40 +194,11 @@ public class AIController : MonoBehaviour , StateUser
     {
         if (plane.target == null) return;
 
-        if (canUseMissiles)
-        {
-            //CalculateMissiles(dt);
-        }
-
         if (canUseCannon)
         {
             CalculateCannon(dt);
         }
     }
-
-    //void CalculateMissiles(float dt)
-    //{
-    //    missileDelayTimer = Mathf.Max(0, missileDelayTimer - dt);
-    //    missileCooldownTimer = Mathf.Max(0, missileCooldownTimer - dt);
-
-    //    var error = plane.Target.Position - plane.Rigidbody.position;
-    //    var range = error.magnitude;
-    //    var targetDir = error.normalized;
-    //    var targetAngle = Vector3.Angle(targetDir, plane.Rigidbody.rotation * Vector3.forward);
-
-    //    if (!plane.MissileLocked || !(targetAngle < missileMaxFireAngle || (180f - targetAngle) < missileMaxFireAngle))
-    //    {
-    //        //don't fire if not locked or target is too off angle
-    //        //can fire if angle is close to 0 (chasing) or 180 (head on)
-    //        missileDelayTimer = missileLockFiringDelay;
-    //    }
-
-    //    if (range < missileMaxRange && range > missileMinRange && missileDelayTimer == 0 && missileCooldownTimer == 0)
-    //    {
-    //        plane.TryFireMissile();
-    //        missileCooldownTimer = missileFiringCooldown;
-    //    }
-    //}
 
     void CalculateCannon(float dt)
     {
@@ -355,7 +274,6 @@ public class AIController : MonoBehaviour , StateUser
         {
             steering = CalculateSteering(targetPosition);
         }
-
         plane.SetControlInput(steering);
     }
 
@@ -366,16 +284,10 @@ public class AIController : MonoBehaviour , StateUser
     public Vector3 targetPosition;
     void FixedUpdate()
     {
-        ///*Vector3*/
-        //steering = Vector3.zero;
-        ///*float throttle;
-        //bool */
-        //emergency = false;
-        ///*Vector3*/
-        //targetPosition = plane.target.transform.position;
-
         var velocityRot = Quaternion.LookRotation(plane.rb.linearVelocity.normalized);
         var ray = new Ray(plane.rb.position, velocityRot * Quaternion.Euler(groundAvoidanceAngle, 0, 0) * Vector3.forward);
+
+        ExecuteStateOnUpdate();
 
         if (Physics.Raycast(ray, groundCollisionDistance + plane.localVelocity.z, groundCollisionMask.value))
         {

@@ -27,12 +27,13 @@ public class DogfightingState : StateBase
     }
 
     public override void OnStateStay()
-    {   if(controller == null)
+    {   
+        if(controller == null)
         {
             print("Controller is null!");
             return;
         }
-        
+
         if(controller.plane.target == null)
         {
             LookingForTargets();

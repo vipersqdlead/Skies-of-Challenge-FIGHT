@@ -32,6 +32,7 @@ Transform:
   - {fileID: 4410946736168538361}
   - {fileID: 5597462293463981295}
   - {fileID: 1032576776052007754}
+  - {fileID: 4255393874243619835}
   m_Father: {fileID: 7639124801785713943}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &193000933679913805
@@ -4254,6 +4255,38 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3583195863142583302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4255393874243619835}
+  m_Layer: 0
+  m_Name: Control
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4255393874243619835
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3583195863142583302}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3114106605108442171}
+  m_Father: {fileID: 7735320518843725567}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3630418155997004643
 GameObject:
   m_ObjectHideFlags: 0
@@ -7309,6 +7342,8 @@ GameObject:
   - component: {fileID: 707189148789588757}
   - component: {fileID: 1547327708895526828}
   - component: {fileID: 4649065010735919226}
+  - component: {fileID: 2193579984554115229}
+  - component: {fileID: 231641350829362704}
   m_Layer: 0
   m_Name: Reisen
   m_TagString: Fighter
@@ -7545,11 +7580,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ba8cc431bf84d479da8eaca4b29a87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerControls: {fileID: 5961288077834183134}
-  engineControls: {fileID: 8921916259647643811}
-  ThrottleIncrement: 1
-  sensitivity: 0.1
-  currentInputVector: {x: 0, y: 0, z: 0}
+  planeTransform: {fileID: 0}
+  playerCamera: {fileID: 0}
+  cursorDistance: 1000
+  target: {fileID: 3114106605108442171}
+  sensitivity: 1
+  maxCursorMovement: 200
+  cursorVisual: {fileID: 0}
 --- !u!114 &1994996906693939299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7663,15 +7700,16 @@ MonoBehaviour:
   camera: {fileID: 4748838434362506145}
   cameraOffset: {x: 0, y: 5, z: -15}
   lookAngle: {x: 0, y: 0}
-  movementScale: 2
-  lookAlpha: 1
-  movementAlpha: 1
+  movementScale: 0
+  lookAlpha: 0
+  movementAlpha: 0
   deathOffset: {x: 0, y: 0, z: 0}
   deathSensitivity: 0
   inputs: {fileID: 840625624679607077}
   hub: {fileID: 0}
   cameraTransform: {fileID: 0}
   camLockedTarget: {fileID: 0}
+  camTransitionSpeed: 2
   cameraParent: {fileID: 2361016667495177559}
   camShaking: 0
 --- !u!114 &7592240644414309653
@@ -7929,6 +7967,70 @@ MonoBehaviour:
   rollInput: 0
   yawInput: 0
   controlType: 0
+--- !u!114 &2193579984554115229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6185050561958779977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b017257907571cd4088e288cb98777c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plane: {fileID: 5961288077834183134}
+  engineControl: {fileID: 8921916259647643811}
+  steeringSpeed: 50
+  minSpeed: 100
+  maxSpeed: 200
+  recoverSpeedMin: 30
+  recoverSpeedMax: 80
+  groundCollisionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCollisionDistance: 100
+  groundAvoidanceAngle: 20
+  groundAvoidanceMinSpeed: 0
+  groundAvoidanceMaxSpeed: 300
+  pitchUpThreshold: -15
+  fineSteeringAngle: 1
+  rollFactor: 0.1
+  yawFactor: 1
+  currentState: {fileID: 231641350829362704}
+  guns: {fileID: 1994996906693939299}
+  canUseCannon: 0
+  bulletSpeed: 350
+  cannonRange: 500
+  cannonMaxFireAngle: 45
+  cannonBurstLength: 3
+  cannonBurstCooldown: 1.5
+  reactionDelayMin: 0
+  reactionDelayMax: 1
+  reactionDelayDistance: 20
+  isRecoveringSpeed: 0
+  dodging: 0
+  lastDodgePoint: {x: 0, y: 0, z: 0}
+  dodgeOffsets: []
+  dodgeTimer: 0
+  steering: {x: 0, y: 0, z: 0}
+  throttle: 0
+  emergency: 0
+  targetPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &231641350829362704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6185050561958779977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25727cc626785db4c9d6bc600e626137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 2193579984554115229}
+  inputs: {fileID: 840625624679607077}
 --- !u!1 &6304713541906807973
 GameObject:
   m_ObjectHideFlags: 0
@@ -8544,6 +8646,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6664204573892302389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3114106605108442171}
+  m_Layer: 0
+  m_Name: AimPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3114106605108442171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6664204573892302389}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 800}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4255393874243619835}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6851401688780809633
 GameObject:
   m_ObjectHideFlags: 0

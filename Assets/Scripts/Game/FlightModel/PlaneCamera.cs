@@ -32,10 +32,10 @@ public class PlaneCamera : MonoBehaviour
 
 
 
-    public enum CameraMode { FreeLook, Tracking, Forward }
-    private CameraMode currentMode = CameraMode.Forward;
+    public enum CameraMode { FreeLook, Tracking }
+    private CameraMode currentMode = CameraMode.Tracking;
     private Quaternion targetRotation;
-    float camTransitionSpeed = 5f; // Adjust this for smoother transitions
+    public float camTransitionSpeed = 5f; // Adjust this for smoother transitions
 
     void Awake()
     {
@@ -49,34 +49,20 @@ public class PlaneCamera : MonoBehaviour
 
     void LateUpdate()
     {
-        lookInput.x = inputs.currentInputVector.z + inputs.currentInputVector.y;
-        lookInput.y = inputs.currentInputVector.x;
+        lookInput.x = hub.fm.controlInput.z + hub.fm.controlInput.y;
+        lookInput.y = hub.fm.controlInput.x;
 
         var cameraOffset = this.cameraOffset;
 
-        if (Input.GetAxis("Zoom") != 0)
-        {
-            camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, 25f, Time.deltaTime * 10f);
-        }
-        else
-        {
-            camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, CalculateFoV(), Time.deltaTime * 10f);
-        }
-
-        if (Input.GetAxis("SelectTarget") != 0)
-        {
-            SearchForTargetCameraLock();
-        }
+        camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, CalculateFoV(), Time.deltaTime * 10f);
 
         HandleCameraMode();
 
         cameraParent.transform.localRotation = Quaternion.Slerp(
             cameraParent.transform.localRotation,
             targetRotation,
-            Time.deltaTime * camTransitionSpeed
+            Time.fixedDeltaTime * camTransitionSpeed
         );
-
-
 
         lookAngle = Vector2.one;
         {
@@ -130,7 +116,7 @@ public class PlaneCamera : MonoBehaviour
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
             cameraParent.transform.localPosition = originalPosition + new Vector3(x, y, 0);
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
         cameraParent.transform.localPosition = originalPosition;
@@ -138,88 +124,17 @@ public class PlaneCamera : MonoBehaviour
         yield return null;
     }
 
-    void SearchForTargetCameraLock()
-    {
-
-        float closestDistance = Mathf.Infinity;
-        GameObject closestTarget = null;
-        RaycastHit[] hits = Physics.SphereCastAll(cameraParent.transform.position, 5000f, cameraParent.transform.forward);
-        foreach (var hit in hits)
-        {
-            if (hit.collider.gameObject == gameObject)
-            {
-                continue;
-            }
-            if (hit.collider.CompareTag("Fighter") || hit.collider.CompareTag("Bomber"))
-            {
-                AircraftHub closestTgtHub = (hit.collider.gameObject.GetComponent<AircraftHub>());
-                if (closestTgtHub.fm.side == hub.fm.side || closestTgtHub.fm == hub.fm.target)
-                {
-                    continue;
-                }
-
-                Vector3 directionToTarget = hit.transform.position - cameraParent.transform.position;
-                float distanceToTarget = directionToTarget.magnitude;
-
-                // Check angle between the camera's forward direction and the direction to the target
-                float angle = Vector3.Angle(cameraParent.transform.forward, directionToTarget);
-
-                // If the target is within the specified angle and is the closest one found so far
-                if (angle <= camera.fieldOfView && distanceToTarget < closestDistance)
-                {
-                    closestDistance = distanceToTarget;
-                    closestTarget = hit.collider.gameObject;
-                }
-
-
-
-
-                //float angleToTarget = Vector3.Angle(transform.forward, hit.transform.position - transform.position);
-                //if (angleToTarget < 90)
-                //{
-                //    camLockedTarget = hit.collider.gameObject;
-                //    break;
-                //}
-            }
-            camLockedTarget = closestTarget;
-            if (camLockedTarget != null)
-            {
-                if (camLockedTarget.GetComponent<FlightModel>() != null)
-                {
-                    hub.fm.target = camLockedTarget.GetComponent<FlightModel>();
-                }
-            }
-            else
-            {
-                hub.fm.target = null;
-            }
-        }
-    }
-
     void HandleCameraMode()
     {
-        float trackingInput = Input.GetAxis("TargetTrackingCamera");
-
-        if (trackingInput != 0)
-        {
-            if (camLockedTarget != null)
-            {
-                currentMode = CameraMode.Tracking;
-            }
-            else
-            {
-                SearchForTargetCameraLock();
-            }
-        }
-        else if (Input.GetAxis("HorizontalCameraRotation") != 0 || Input.GetAxis("VerticalCameraRotation") != 0) // Replace with your actual input check
+        if (Input.GetKey(KeyCode.C)) // Replace with your actual input check
         {
             currentMode = CameraMode.FreeLook;
         }
         else
         {
-            currentMode = CameraMode.Forward;
+            currentMode = CameraMode.Tracking;  
         }
-
+        
         UpdateCameraTargetRotation();
     }
 
@@ -233,18 +148,13 @@ public class PlaneCamera : MonoBehaviour
                 break;
 
             case CameraMode.Tracking:
-                if (camLockedTarget != null)
-                {
+
                     // Get world-space LookAt rotation
-                    Quaternion worldLookRotation = Quaternion.LookRotation(camLockedTarget.transform.position - cameraParent.transform.position);
+                    Quaternion worldLookRotation = Quaternion.LookRotation(hub.playerInputs.targetWorldPosition - cameraParent.transform.position);
 
                     // Convert to local space relative to the player's aircraft
                     targetRotation = Quaternion.Inverse(hub.transform.rotation) * worldLookRotation;
-                }
-                break;
-
-            case CameraMode.Forward:
-                targetRotation = Quaternion.identity; // Local forward orientation
+                
                 break;
         }
 
