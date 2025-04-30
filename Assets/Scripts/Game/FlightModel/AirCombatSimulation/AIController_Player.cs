@@ -27,7 +27,7 @@ public class AIController_Player : StateBase
     {
         if (inputs != null)
         {
-            controller.targetPosition = inputs.targetWorldPosition;
+            controller.targetPosition = inputs.targetCursorTransform.position;
             controller.SteerToTarget(controller.targetPosition);
         }
     }

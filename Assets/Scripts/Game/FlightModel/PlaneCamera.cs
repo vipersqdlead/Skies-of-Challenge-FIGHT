@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlaneCamera : MonoBehaviour
 {
-    [SerializeField] new Camera camera;
+    [SerializeField] public new Camera camera;
     [SerializeField] Vector3 cameraOffset;
     [SerializeField] Vector2 lookAngle;
     [SerializeField] float movementScale;
@@ -35,7 +35,7 @@ public class PlaneCamera : MonoBehaviour
     public enum CameraMode { FreeLook, Tracking }
     private CameraMode currentMode = CameraMode.Tracking;
     private Quaternion targetRotation;
-    public float camTransitionSpeed = 5f; // Adjust this for smoother transitions
+    float camTransitionSpeed = 20f; // Adjust this for smoother transitions
 
     void Awake()
     {
@@ -150,7 +150,7 @@ public class PlaneCamera : MonoBehaviour
             case CameraMode.Tracking:
 
                     // Get world-space LookAt rotation
-                    Quaternion worldLookRotation = Quaternion.LookRotation(hub.playerInputs.targetWorldPosition - cameraParent.transform.position);
+                    Quaternion worldLookRotation = Quaternion.LookRotation(hub.playerInputs.targetCursorTransform.position - cameraParent.transform.position);
 
                     // Convert to local space relative to the player's aircraft
                     targetRotation = Quaternion.Inverse(hub.transform.rotation) * worldLookRotation;
@@ -163,9 +163,12 @@ public class PlaneCamera : MonoBehaviour
     float CalculateFoV()
     {
         float baseFoV = 50f;
-        float maxFoV = 75f;
+        float maxFoV = 85f;
 
-        float currentFoV = Mathf.Lerp(baseFoV, maxFoV, Mathf.Clamp(hub.fm.machSpeed, 0.1f, 1f));
+        float speedPercent = 0f;
+        speedPercent = (hub.fm.currentSpeed * 100 / hub.fm.neverExceedSpeed) / 100f;
+
+        float currentFoV = Mathf.Lerp(baseFoV, maxFoV, speedPercent);
         return currentFoV;
     }
 }

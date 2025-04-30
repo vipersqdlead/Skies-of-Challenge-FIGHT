@@ -32,7 +32,7 @@ public class SurvivalMissionStatus : MonoBehaviour
     public AudioListener camListener;
 
     [SerializeField] GameObject currentLockedTarget;
-    public TMP_Text KillCountUI, PointCount, TimeLeft, currentWaveUI, newWaveText, newWaveBonusText, bonusWaveObjectiveText, enemiesLeftText, currentTarget, mapBoundaryWarning, mEnd_TimeBonus, mEnd_PointScore, mEnd_FinalScore;
+    public TMP_Text KillCountUI, PointCount, TimeLeft, newWaveText, enemiesLeftText, mapBoundaryWarning, mEnd_TimeBonus, mEnd_PointScore, mEnd_FinalScore;
     public AudioSource mapBoundaryWarningAS;
     public AudioClip mapBoundaryWarningLight, mapBoundaryWarningStrong;
 
@@ -95,34 +95,20 @@ public class SurvivalMissionStatus : MonoBehaviour
             TimeLeft.color = Color.red;
             KillCountUI.color = Color.red;
             PointCount.color = Color.red;
-            currentWaveUI.color = Color.red;
             enemiesLeftText.color = Color.red;
-            currentTarget.color = Color.red;
         }
         else
         {
             TimeLeft.color = Color.white;
             KillCountUI.color = Color.white;
             PointCount.color = Color.white;
-            currentWaveUI.color = Color.white;
-            enemiesLeftText.color = Color.white;
-            currentTarget.color = Color.white;
+            enemiesLeftText.color = Color.red;
         }
         TimeLeft.text = "Time: " + (int)MissionTimer;
         KillCountUI.text = "Destroyed: " + KillCounter.Kills;
         PointCount.text = "Points: " + KillCounter.Points;
-        currentWaveUI.text = "Wave " + currentWave;
         enemiesLeftText.text = enemyFighters.Count + " Enemies Left";
         BlackBG.fillClockwise = true;
-
-        if(playerAcHub.planeCam.camLockedTarget != null)
-        {
-            currentTarget.text = "Target: " + playerAcHub.planeCam.camLockedTarget.gameObject.name + " (" + playerAcHub.fm.target.health.pointsWorth + ")";
-        }
-        else
-        {
-            currentTarget.text = "Target: None";
-        }
 
         if (currentLockedTarget != playerAcHub.planeCam.camLockedTarget)
         {
@@ -148,40 +134,7 @@ public class SurvivalMissionStatus : MonoBehaviour
         newWaveText.text = "Wave " + currentWave + " Inbound!";
         newWaveText.gameObject.GetComponent<AudioSource>().PlayOneShot(newWaveText.gameObject.GetComponent<AudioSource>().clip);
 
-        if (currentWave != 1)
         {
-            newWaveBonusText.enabled = true;
-            int randomReward = UnityEngine.Random.Range(1, 9);
-            switch (randomReward)
-            {
-                case 1:
-                    playerAcHub.hp.HealMaxHP();
-                    newWaveBonusText.text = "Reward: Full Health Restored!";
-                    break;
-                case 2:
-                    playerAcHub.hp.HealHPAmmount(UnityEngine.Random.Range(70, 150));
-                    newWaveBonusText.text = "Reward: Health Restored!";
-                    break;
-                case 3:
-                    playerAcHub.hp.EnableInvulerability();
-                    newWaveBonusText.text = "Reward: Invulnerable for 3 minutes!";
-                    break;
-                case 7:
-                    waveSpawner.PropAlliedSpawnWave();
-                    newWaveBonusText.text = "Reward: Allied Reinforcements!";
-                    break;
-            }
-        }
-
-        else
-        {
-            if (currentWave % 5 == 1 && currentWave != 1)
-            {
-                playerAcHub.hp.GrantExtraLife();
-
-                bonusWaveObjectiveText.text = "Continue granted!";
-                bonusWaveObjectiveText.enabled = true;
-            }
             if (currentWave <= 2)
             {
                 waveSpawner.PropSpawnWave(1);
@@ -206,8 +159,6 @@ public class SurvivalMissionStatus : MonoBehaviour
 
         yield return new WaitForSeconds(5f);
         newWaveText.enabled = false;
-        newWaveBonusText.enabled = false;
-        bonusWaveObjectiveText.enabled = false;
         startingwave = false;
         yield return null;
     }

@@ -15,7 +15,6 @@ public class FlightModel : MonoBehaviour
     public float maxAngleOfAttack;
     [SerializeField] public float rateOfClimb;
     public float machSpeed;
-    public float IAS_Speed;
 
 
     [Header("Battle related")]
@@ -32,7 +31,6 @@ public class FlightModel : MonoBehaviour
     [SerializeField] float sweepAngle;
     [SerializeField] float aspectRatio;
     public float drag;
-    [SerializeField] public float currentDrag;
     public bool flaps, airbrake, stalling;
     public float stallSpeed;
     public float neverExceedSpeed;
@@ -104,30 +102,25 @@ public class FlightModel : MonoBehaviour
         calculateForces();
         calculateForcesLateral();
         CalculateState();
-        //calculateControlForces(controlInput.x, controlInput.z, controlInput.y);
-        NeverExceedSpeedPenalty();
         CheckFlapsAndBrakes();
 
         currentSpeed = rb.linearVelocity.magnitude * 3.6f;
-        IAS_Speed = currentSpeed * currentDrag;
     }
 
     private void calculateForces()
     {
-        currentDrag = Utilities.airDensityAnimCurve.Evaluate(transform.position.y / 10000f);
-
         // *flip sign(s) if necessary*
         Vector3 localVelocity = transform.InverseTransformDirection(rb.linearVelocity);
         float _angleOfAttack = Mathf.Atan2(-localVelocity.y, localVelocity.z);
 
         // α * 2 * PI * (AR / AR + 2)
-        float inducedLift = _angleOfAttack * (aspectRatio / (aspectRatio + 2f)) * 2f * Mathf.PI * currentDrag;
+        float inducedLift = _angleOfAttack * (aspectRatio / (aspectRatio + 2f)) * 2f * Mathf.PI;
 
         // CL ^ 2 / (AR * PI)
         float inducedDrag = (inducedLift * inducedLift) / (aspectRatio * Mathf.PI);
 
         // V ^ 2 * R * 0.5 * A
-        float pressure = (rb.linearVelocity.sqrMagnitude * currentDrag) * 1.2754f * 0.5f * wingArea;
+        float pressure = (rb.linearVelocity.sqrMagnitude) * 1.2754f * 0.5f * wingArea;
 
 
         float extradrag = 1f;
@@ -141,9 +134,9 @@ public class FlightModel : MonoBehaviour
                 inducedDrag = inducedDrag * Mathf.Clamp(extradrag * anims.airbrakes.Length - 1, 1f, extradrag * anims.airbrakes.Length - 1);
         }
 
-        float stallLiftFactor = Mathf.Clamp01((IAS_Speed - stallSpeed) / stallSpeed + 1f);
+        float stallLiftFactor = Mathf.Clamp01((currentSpeed - stallSpeed) / stallSpeed + 1f);
         float lift = inducedLift * pressure * stallLiftFactor;
-        float _drag = ((drag * currentDrag + inducedDrag) * pressure) * extradrag;
+        float _drag = ((drag + inducedDrag) * pressure) * extradrag;
 
 
         // *flip sign(s) if necessary*
@@ -167,31 +160,21 @@ public class FlightModel : MonoBehaviour
 
     public void calculateControlForces(float pitch, float yaw, float roll)
     {
-        float normalizedSpeed = IAS_Speed / 1234f;
-
-        //float AoADampFactor = Mathf.Clamp01(maxAngleOfAttack - Mathf.Abs(angleOfAttack) / maxAngleOfAttack - criticalAoA);
-
-
         // Pitch force
-        float pitchOutput = pitch * (PitchForce.Evaluate(normalizedSpeed) * 100f);
+        float pitchOutput = pitch * (PitchForce.Evaluate(machSpeed) * 100f);
         if(anims != null)
         {
                 pitchOutput -= anims.flapExtensionValue * (anims.flapExtensionAngle / 10f);
         }
 
         // Yaw force
-        float yawOutput = yaw * (YawForce.Evaluate(normalizedSpeed) * 100f);
+        float yawOutput = yaw * (YawForce.Evaluate(machSpeed) * 100f);
 
         // Roll force
-        float rollOutput = roll * (RollForce.Evaluate(normalizedSpeed) * 100f);
+        float rollOutput = roll * (RollForce.Evaluate(machSpeed) * 100f);
 
-        //Quaternion rot = rb.rotation * Quaternion.Euler(pitchOutput * Time.deltaTime * AoADampFactor, yawOutput * Time.deltaTime, (-rollOutput + -yawOutput) * Time.deltaTime);
         Quaternion rot = rb.rotation * Quaternion.Euler(pitchOutput * Time.deltaTime, yawOutput * Time.deltaTime, (-rollOutput + -yawOutput) * Time.deltaTime);
         rb.MoveRotation(rot);
-
-
-        //Vector3 torque = rb.rotation * new Vector3(pitchOutput * Time.deltaTime, yawOutput * Time.deltaTime, -rollOutput * Time.deltaTime);
-        //rb.AddTorque(torque, ForceMode.Force);
 
         if (angleOfAttack >= 5f)
         {
@@ -220,10 +203,10 @@ public class FlightModel : MonoBehaviour
         float inducedDrag = (inducedLift * inducedLift) / (aspectRatio * Mathf.PI);
 
         // V ^ 2 * R * 0.5 * A
-        float pressure = (rb.linearVelocity.sqrMagnitude * currentDrag) * 1.2754f * 0.5f * (wingArea / 2);
+        float pressure = (rb.linearVelocity.sqrMagnitude) * 1.2754f * 0.5f * (wingArea / 2);
 
         float lift = inducedLift * pressure;
-        float _drag = ((drag * currentDrag + inducedDrag) * pressure);
+        float _drag = ((drag + inducedDrag) * pressure);
         //float _drag = (0.021f + inducedDrag) * pressure;
 
         // *flip sign(s) if necessary*
@@ -278,16 +261,7 @@ public class FlightModel : MonoBehaviour
         CalculateMaxAoA();
     }
 
-    void NeverExceedSpeedPenalty()
-    {
-        if(neverExceedSpeed != 0)
-        {
-            if (currentSpeed > neverExceedSpeed)
-            {
-                health.DealExternalDamagePerSecond();
-            }
-        }
-    }
+
 
     public bool brakeInput;
     void CheckFlapsAndBrakes()

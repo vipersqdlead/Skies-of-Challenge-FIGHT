@@ -9,7 +9,7 @@ public class SurvivalMissionSetup : MonoBehaviour
     [Header("Mission Settings")]
     [SerializeField] GameObject mapPrefab;
     [SerializeField] GameObject[] playerAircraftPrefabs;
-    [SerializeField] GameObject player;
+    [SerializeField] GameObject player, AimCursor;
     AircraftHub hub;
 
     [SerializeField] SurvivalMissionStatus status;
@@ -17,10 +17,11 @@ public class SurvivalMissionSetup : MonoBehaviour
 
     private void Awake()
     {
-        player = Instantiate(playerAircraftPrefabs[PlayerPrefs.GetInt("Survival Aircraft")], new Vector3(transform.position.x, 4500f, transform.position.z), transform.rotation);
+        player = Instantiate(playerAircraftPrefabs[PlayerPrefs.GetInt("Survival Aircraft")], new Vector3(transform.position.x, 4000f, transform.position.z), transform.rotation);
         Instantiate(mapPrefab);
         status.Player = player;
         hub = player.GetComponent<AircraftHub>();
+        hub.playerInputs.targetCursorTransform = AimCursor.transform;
         status.KillCounter = hub.killcounter;
         status.deathCam.Player = player;
         status.waveSpawner = waveSpawner;
@@ -47,7 +48,7 @@ public class SurvivalMissionSetup : MonoBehaviour
     public RectTransform UI_altBigArrow;
 
     [SerializeField] TMP_Text UI_HP, UI_Combo;
-    [SerializeField] GameObject UI_Crosshair, UI_LeadMarker, UI_FPM, UI_Center;
+    [SerializeField] GameObject UI_Crosshair, UI_LeadMarker, UI_FPM, UI_AimCursor, UI_Center;
     [SerializeField] AudioSource UI_stallWarning_SFX;
     [SerializeField] RawImage UI_healthIcon;
     [SerializeField] EnemyMarkers markers;
@@ -64,9 +65,10 @@ public class SurvivalMissionSetup : MonoBehaviour
         hub.planeToUI.healthIcon = UI_healthIcon;
         hub.planeToUI.killsCombo = UI_Combo;
 
-        hub.planeHUD.hudCenter = UI_Center.transform;
-        hub.planeHUD.velocityMarker = UI_FPM.transform;
-        hub.planeHUD.leadMarker = UI_LeadMarker.transform;
+
+        hub.planeToUI.velocityMarker = UI_FPM.transform;
+        hub.planeToUI.crosshair = UI_Crosshair.transform;
+        hub.planeToUI.AimCursor = UI_AimCursor.transform;
 
         waveSpawner.markers = markers;
         minimap.player = player.transform;

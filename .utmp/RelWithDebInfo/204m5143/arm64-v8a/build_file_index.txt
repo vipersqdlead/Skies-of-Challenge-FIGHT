@@ -1,0 +1,2 @@
+E:\GitHub Repos\Skies-of-Challenge-FIGHT\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+E:\GitHub Repos\Skies-of-Challenge-FIGHT\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

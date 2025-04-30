@@ -7,98 +7,121 @@ using static UnityEngine.Rendering.DebugUI;
 public class PlayerInputs : MonoBehaviour
 {
     [Header("References")]
-    public Transform planeTransform;
+    public Transform planeTransform;       // Player's plane
+    public Transform targetCursorTransform; // Assign a dummy GameObject (empty or small marker)
     public Camera playerCamera;
-    public float cursorDistance = 50f; // Distance in world units from plane
-    public Transform target;
 
-    [Header("Cursor Settings")]
-    public float sensitivity = 5f;  // Mouse sensitivity
-    public float maxCursorMovement = 200f; // Max cursor movement in pixels (like a screen limit)
-    Vector2 mouseDelta;
+    [Header("Cursor Movement Settings")]
+    public float cursorDistance = 1000f;        // How far in front of the plane the cursor starts
+    public float moveSpeed = 200f;              // How fast the cursor moves
+    public bool useTiltControls;
+    public float tiltSensitivity = 5f;
+    public float mouseSensitivity = 40f;
 
-    [Header("Debug")]
-    public Transform cursorVisual; // Optional: a dummy object to show the targetWorldPosition
+    private Vector2 inputMovement; // Horizontal and vertical input accumulation
+    private Vector2 calibratedOffset = Vector2.zero;
+    private bool tiltCalibrated = false;
 
-    private Vector2 currentCursorOffset = Vector2.zero; // Cursor position offset from center (in screen space)
-    public Vector3 targetWorldPosition { get; private set; }
+    private Matrix4x4 calibrationMatrix;
 
     private void Awake()
     {
         planeTransform = transform;
         playerCamera = Camera.main;
 
+        useTiltControls = Application.isMobilePlatform;
+        if (useTiltControls)
+        {
+            CalibrateTilt();
+        }
+
+
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-
     void Update()
     {
-        if(HasMouseMoved())
+        ReadInput();
+        UpdateCursorPosition();
+    }
+
+    private void ReadInput()
+    {
+        if (useTiltControls)
         {
-            UpdateCursorOffset();
-            MoveTargetAround();
-            //UpdateTargetWorldPosition();
+
+            //Vector3 raw = Input.acceleration;
+
+            //Vector2 tiltRaw = new Vector2(raw.x, raw.y);
+            //Vector2 tiltAdjusted = tiltRaw - calibratedOffset;
+
+            //inputMovement = tiltAdjusted * tiltSensitivity;
+
+            float tiltX = GetCalibratedAcceleration().x;
+            float tiltY = GetCalibratedAcceleration().y;
+            inputMovement = new Vector2(tiltX, tiltY) * tiltSensitivity;
+        }
+        else
+        {
+            float moveX = Input.GetAxis("Mouse X");
+            float moveY = Input.GetAxis("Mouse Y");
+            inputMovement = new Vector2(moveX, moveY) * mouseSensitivity;
         }
     }
 
-    private bool HasMouseMoved()
+    private void UpdateCursorPosition()
     {
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
-        return Mathf.Abs(mouseX) > 0.001f || Mathf.Abs(mouseY) > 0.001f;
-    }
-
-    public void MoveTargetAround()
-    {
-        target.parent.rotation = Quaternion.Euler(target.parent.rotation.x + (mouseDelta.x * Time.deltaTime * 60f), target.parent.rotation.y + (mouseDelta.y * Time.deltaTime * 60f), 0);
-        targetWorldPosition = target.position;
-    }
-
-    private void UpdateCursorOffset()
-    {
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
-
-        mouseDelta = new Vector2(mouseX, mouseY) * sensitivity;
-
-        // Only add delta if there is actual movement
-        if (mouseDelta.sqrMagnitude > 0.0001f)
-        {
-            currentCursorOffset += mouseDelta;
-
-            // Clamp cursor inside max movement area
-            currentCursorOffset = Vector2.ClampMagnitude(currentCursorOffset, maxCursorMovement);
-        }
-    }
-
-    private void UpdateTargetWorldPosition()
-    {
-        if (planeTransform == null || playerCamera == null)
+        if (targetCursorTransform == null || planeTransform == null)
             return;
 
-        // Create a screen point from center + cursorOffset
-        Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
-        Vector3 cursorScreenPosition = screenCenter + new Vector3(currentCursorOffset.x, currentCursorOffset.y, 0f);
+        // Get directional vectors based on camera view, NOT aircraft rotation
+        Vector3 cameraRight = playerCamera.transform.right;
+        Vector3 cameraUp = playerCamera.transform.up;
 
-        // Create a ray from this position
-        Ray ray = playerCamera.ScreenPointToRay(cursorScreenPosition);
+        // Apply movement based on camera's view orientation
+        Vector3 moveDirection = (cameraRight * inputMovement.x + cameraUp * inputMovement.y) * moveSpeed * Time.deltaTime;
 
-        // Set the target world position along the ray
-        targetWorldPosition = ray.origin + ray.direction * cursorDistance;
+        // Move the target cursor
+        targetCursorTransform.position += moveDirection;
 
-        // Move visual cursor if assigned
-        if (cursorVisual != null)
-        {
-            cursorVisual.position = targetWorldPosition;
-        }
+        // Clamp the cursor's position relative to the plane
+        Vector3 localOffset = planeTransform.InverseTransformPoint(targetCursorTransform.position);
+        localOffset.z = cursorDistance; // Always maintain forward distance
+
+        // Apply the clamped position
+        targetCursorTransform.position = planeTransform.TransformPoint(localOffset);
     }
     void OnDrawGizmos()
     {
         if (planeTransform != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(planeTransform.position, targetWorldPosition);
+            Gizmos.DrawLine(planeTransform.position, targetCursorTransform.position);
         }
+    }
+
+    public void CalibrateTilt()
+    {
+        //Vector3 raw = Input.acceleration;
+
+        //// We're assuming the user holds the device in landscape mode (horizontal),
+        //// so we take X (left/right) and Y (up/down) as input axes
+        //calibratedOffset = new Vector2(raw.x, raw.y);
+        //tiltCalibrated = true;
+
+        //Debug.Log($"Tilt calibrated: {calibratedOffset}");
+
+        // Get the initial orientation (replace with your actual initial orientation)
+        Vector3 initialOrientation = Input.acceleration;
+
+        // Create a matrix to compensate for the initial orientation
+        calibrationMatrix = Matrix4x4.Rotate(Quaternion.LookRotation(-initialOrientation));
+    }
+
+    Vector3 GetCalibratedAcceleration()
+    {
+        // Apply the calibration to the raw acceleration data
+        return calibrationMatrix.MultiplyVector(Input.acceleration);
     }
 }

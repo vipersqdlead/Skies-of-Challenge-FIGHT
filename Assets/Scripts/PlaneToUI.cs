@@ -13,6 +13,8 @@ public class PlaneToUI : MonoBehaviour
 
     [Header("General Settings")]
     [SerializeField] AircraftHub hub;
+
+    [SerializeField] Camera cam;
     [SerializeField] Rigidbody planeRb;
     [SerializeField] FlightModel playerControls;
     [SerializeField] EngineControl engineControl;
@@ -31,6 +33,11 @@ public class PlaneToUI : MonoBehaviour
     public RectTransform smallAltArrow;
     public RectTransform altBigArrow;
 
+    [Header("Velocity")]
+    public Transform velocityMarker;
+    public Transform crosshair;
+    public Transform AimCursor;
+
     [Header("Health")]
     public RawImage healthIcon;
     public TMP_Text Health, killsCombo;
@@ -40,6 +47,7 @@ public class PlaneToUI : MonoBehaviour
     void Awake()
     {
         hub = GetComponent<AircraftHub>();
+        cam = hub.planeCam.camera;
         engineControl = hub.engineControl;
         screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
     }
@@ -50,6 +58,9 @@ public class PlaneToUI : MonoBehaviour
         ShowDials();
         ShowHealth();
         CountKillsCombo();
+        UpdateVelocityMarker();
+        UpdateCrosshair();
+        AimCursorUI();
     }
 
     void ShowHealth()
@@ -94,7 +105,7 @@ public class PlaneToUI : MonoBehaviour
 
         if (speedLabel != null)
         {
-            if (playerControls.IAS_Speed < playerControls.stallSpeed + 30f || playerControls.stalling == true|| hub.planeCam.camShaking == true || playerControls.currentSpeed > playerControls.neverExceedSpeed - 60f)
+            if (playerControls.currentSpeed < playerControls.stallSpeed + 30f || playerControls.stalling == true|| hub.planeCam.camShaking == true || playerControls.currentSpeed > playerControls.neverExceedSpeed - 60f)
             {
                 speedLabel.color = Color.red;
             }
@@ -168,5 +179,41 @@ public class PlaneToUI : MonoBehaviour
             killsCombo.text = "Splash 1!";
             killsCombo.enabled = false;
         }
+    }
+
+    void UpdateVelocityMarker()
+    {
+        var velocity = planeTransform.forward;
+
+
+        if (hub.rb.linearVelocity.sqrMagnitude > 1)
+        {
+            velocity = hub.rb.linearVelocity;
+        }
+
+        var screenSpace = cam.WorldToScreenPoint(cam.transform.position + velocity);
+        var hudPos = screenSpace - new Vector3(cam.pixelWidth / 2, cam.pixelHeight / 2);
+
+        velocityMarker.localPosition = new Vector3(hudPos.x, hudPos.y, 0);
+    }
+
+    void UpdateCrosshair()
+    {
+        var forward = planeTransform.forward;
+
+        var screenSpace = cam.WorldToScreenPoint(cam.transform.position + forward);
+        var hudPos = screenSpace - new Vector3(cam.pixelWidth / 2, cam.pixelHeight / 2);
+
+        crosshair.localPosition = new Vector3(hudPos.x, hudPos.y, 0);
+    }
+
+    void AimCursorUI()
+    {
+        var aimCursorPoint = hub.playerInputs.targetCursorTransform.position;
+
+        var screenSpace = cam.WorldToScreenPoint(aimCursorPoint);
+        var hudPos = screenSpace - new Vector3(cam.pixelWidth / 2, cam.pixelHeight / 2);
+
+        AimCursor.localPosition = new Vector3(hudPos.x, hudPos.y, 0);
     }
 }

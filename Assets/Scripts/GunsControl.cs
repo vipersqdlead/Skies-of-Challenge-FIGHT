@@ -25,7 +25,7 @@ public class GunsControl : MonoBehaviour
     {
         if (isPlayer)
         {
-            if (Input.GetAxis("FireCannon") != 0)
+            if (Input.GetAxis("FireCannon") != 0 || Input.touchCount != 0)
             {
                 trigger = true;
             }

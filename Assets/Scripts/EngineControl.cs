@@ -72,12 +72,7 @@ public class EngineControl : MonoBehaviour
     private void CalculateEnginePower()
     {
 
-        currentEnginePower = (currentThrust * thrustBySpeedMultiplier.Evaluate(aircraft.IAS_Speed / 1234) * powerByAltitudeMultiplier.Evaluate(transform.position.y / 10000f)) * 60 * Time.fixedDeltaTime * ThrottleInput;
-        if (useAirDensityMultiplier)
-        {
-            currentEnginePower = currentEnginePower * aircraft.currentDrag;
-        }
-        //engineSound.volume = ThrottleInput;
+        currentEnginePower = (currentThrust * thrustBySpeedMultiplier.Evaluate(aircraft.currentSpeed / 1234) * powerByAltitudeMultiplier.Evaluate(transform.position.y / 10000f)) * 60 * Time.fixedDeltaTime * ThrottleInput;
 
             if (afterBurner == true)
             {

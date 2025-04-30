@@ -1,0 +1,10 @@
+# ninja log v5
+62	14251	7676865813644370	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	2139f3a0a7554e36
+48	14419	7676865814699243	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	218853f914e08091
+171	14564	7676865816966706	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	a5290ccf6255723
+3	14572	7676865817098580	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	cdf1e911e3f1e433
+19	14848	7676865820197776	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	e16642a138b3044a
+92	15859	7676865830705334	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	f375ec09ee603ad2
+77	15899	7676865830947958	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	a116f8858a12d861
+33	16156	7676865833601002	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	102c6d840dadaebe
+16158	16550	7676865837648303	E:/GitHub Repos/Skies-of-Challenge-FIGHT/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/204m5143/obj/arm64-v8a/libgame.so	e4f513d576900c5f
