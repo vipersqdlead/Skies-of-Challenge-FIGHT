@@ -29,10 +29,10 @@ public class PlayerInputs : MonoBehaviour
         planeTransform = transform;
         playerCamera = Camera.main;
 
-        useTiltControls = Application.isMobilePlatform;
+        //useTiltControls = Application.isMobilePlatform;
         if (useTiltControls)
         {
-            CalibrateTilt();
+            //CalibrateTilt();
         }
 
 
@@ -58,8 +58,12 @@ public class PlayerInputs : MonoBehaviour
 
             //inputMovement = tiltAdjusted * tiltSensitivity;
 
-            float tiltX = GetCalibratedAcceleration().x;
-            float tiltY = GetCalibratedAcceleration().y;
+            //float tiltX = GetCalibratedAcceleration().x;
+            //float tiltY = GetCalibratedAcceleration().y;
+
+            float tiltY = NormalizeTilt(Input.acceleration.y, 0.4f, 0f, 0.8f);
+            float tiltX = NormalizeTilt(Input.acceleration.x, 0f, -0.7f, 0.7f); // for left/right, assuming flat hold
+
             inputMovement = new Vector2(tiltX, tiltY) * tiltSensitivity;
         }
         else
@@ -123,5 +127,13 @@ public class PlayerInputs : MonoBehaviour
     {
         // Apply the calibration to the raw acceleration data
         return calibrationMatrix.MultiplyVector(Input.acceleration);
+    }
+
+    float NormalizeTilt(float raw, float neutral, float minInput, float maxInput)
+    {
+        if (raw < neutral)
+            return Mathf.InverseLerp(minInput, neutral, raw) * -1f;
+        else
+            return Mathf.InverseLerp(neutral, maxInput, raw);
     }
 }

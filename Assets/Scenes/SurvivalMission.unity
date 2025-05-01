@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 0.2
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 1, g: 1, b: 1, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: d9dca9ae1786c394f9e79c637aa9a7bf, type: 2}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1123,13 +1123,6 @@ MonoBehaviour:
   mapPrefab: {fileID: 959276623922805956, guid: 0375a23977ce0b8418c584e23902c0c8, type: 3}
   playerAircraftPrefabs:
   - {fileID: 6185050561958779977, guid: 35b5045ef3fd7944fb052ebe1591a111, type: 3}
-  - {fileID: 7984375099495967625, guid: be4662cf2e55208459aad74011f9d0e2, type: 3}
-  - {fileID: 8324227627610284351, guid: cbef9b9261689d04391a4fc4ec1d58ed, type: 3}
-  - {fileID: 5795742398092081329, guid: d4d225d743a0fdb49aae47ed2783d968, type: 3}
-  - {fileID: 6185050561958779977, guid: cdf64bda3c002384c85877294dca9965, type: 3}
-  - {fileID: 8324227627610284351, guid: 7bfe8639ecb090e4ea742e7a750c8c72, type: 3}
-  - {fileID: 8324227627610284351, guid: 3434aa12a9f07134cbfeeb0a49805bf1, type: 3}
-  - {fileID: 1540922269036293049, guid: 388d51c078bdff347b06ad904ac6f4b2, type: 3}
   player: {fileID: 0}
   AimCursor: {fileID: 2007069975}
   status: {fileID: 614393189}
@@ -1215,10 +1208,9 @@ MonoBehaviour:
   player: {fileID: 0}
   propWavePrefabs:
   - {fileID: 5069177628532559514, guid: 4832a852165295244962dfd183e1117e, type: 3}
-  - {fileID: 5069177628532559514, guid: daf2c8ea49d44e84d87f0599105b42a2, type: 3}
   - {fileID: 5069177628532559514, guid: 653b1896d911e6e4d85c915b60e710f0, type: 3}
-  - {fileID: 5069177628532559514, guid: 4cbee610d7fede449a6f708700f67720, type: 3}
   - {fileID: 5069177628532559514, guid: aa08010bad8237f43831375e32ffe494, type: 3}
+  - {fileID: 5069177628532559514, guid: daf2c8ea49d44e84d87f0599105b42a2, type: 3}
   SpawnPositions:
   - {fileID: 309197038}
   - {fileID: 1638053559}
