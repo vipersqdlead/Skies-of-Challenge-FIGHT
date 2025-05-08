@@ -548,6 +548,22 @@ PrefabInstance:
       propertyPath: m_lineSpacing
       value: -40
       objectReference: {fileID: 0}
+    - target: {fileID: 3359024268341587408, guid: 37bfb7f5ed4a9b64c999ada4e2bead96, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359024268341587408, guid: 37bfb7f5ed4a9b64c999ada4e2bead96, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 614393189}
+    - target: {fileID: 3359024268341587408, guid: 37bfb7f5ed4a9b64c999ada4e2bead96, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359024268341587408, guid: 37bfb7f5ed4a9b64c999ada4e2bead96, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SurvivalMissionStatus, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3385898775440854742, guid: 37bfb7f5ed4a9b64c999ada4e2bead96, type: 3}
       propertyPath: m_Name
       value: MissilesSAG
@@ -959,6 +975,10 @@ PrefabInstance:
     - target: {fileID: 8068147566343045484, guid: 37bfb7f5ed4a9b64c999ada4e2bead96, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745855536503137039, guid: 37bfb7f5ed4a9b64c999ada4e2bead96, type: 3}
+      propertyPath: m_Name
+      value: Pause
       objectReference: {fileID: 0}
     - target: {fileID: 9135403059774470497, guid: 37bfb7f5ed4a9b64c999ada4e2bead96, type: 3}
       propertyPath: m_Volume

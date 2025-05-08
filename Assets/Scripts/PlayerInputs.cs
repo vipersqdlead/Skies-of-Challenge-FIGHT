@@ -16,13 +16,16 @@ public class PlayerInputs : MonoBehaviour
     public float moveSpeed = 200f;              // How fast the cursor moves
     public bool useTiltControls;
     public float tiltSensitivity = 5f;
+    public AnimationCurve sensitivityCurve;
     public float mouseSensitivity = 40f;
 
-    private Vector2 inputMovement; // Horizontal and vertical input accumulation
-    private Vector2 calibratedOffset = Vector2.zero;
-    private bool tiltCalibrated = false;
+    public float tiltY, tiltX;
 
-    private Matrix4x4 calibrationMatrix;
+    public float normalizedY;
+
+    private Vector2 inputMovement; // Horizontal and vertical input accumulation
+    public float calibratedOffset;
+    public bool isCalibrated;
 
     private void Awake()
     {
@@ -30,18 +33,17 @@ public class PlayerInputs : MonoBehaviour
         playerCamera = Camera.main;
 
         //useTiltControls = Application.isMobilePlatform;
-        if (useTiltControls)
-        {
-            //CalibrateTilt();
-        }
-
-
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+
     void Update()
-    {
+    {        
+        if (useTiltControls && !isCalibrated)
+        {
+            CalibrateTilt();
+        }
         ReadInput();
         UpdateCursorPosition();
     }
@@ -50,21 +52,14 @@ public class PlayerInputs : MonoBehaviour
     {
         if (useTiltControls)
         {
+            tiltY = Mathf.Clamp01(Mathf.Abs(Input.acceleration.y));
+            tiltX = Input.acceleration.x;
 
-            //Vector3 raw = Input.acceleration;
+            normalizedY = Mathf.Lerp(-1f, 1f, Mathf.Clamp01(tiltY - 0.1f));
 
-            //Vector2 tiltRaw = new Vector2(raw.x, raw.y);
-            //Vector2 tiltAdjusted = tiltRaw - calibratedOffset;
+            float sensitivity = sensitivityCurve.Evaluate(Mathf.Clamp01(Mathf.Abs(Input.acceleration.y) + Mathf.Abs(Input.acceleration.x))) * tiltSensitivity;
 
-            //inputMovement = tiltAdjusted * tiltSensitivity;
-
-            //float tiltX = GetCalibratedAcceleration().x;
-            //float tiltY = GetCalibratedAcceleration().y;
-
-            float tiltY = NormalizeTilt(Input.acceleration.y, 0.4f, 0f, 0.8f);
-            float tiltX = NormalizeTilt(Input.acceleration.x, 0f, -0.7f, 0.7f); // for left/right, assuming flat hold
-
-            inputMovement = new Vector2(tiltX, tiltY) * tiltSensitivity;
+            inputMovement = new Vector2(tiltX, -normalizedY) * sensitivity;
         }
         else
         {
@@ -107,33 +102,8 @@ public class PlayerInputs : MonoBehaviour
 
     public void CalibrateTilt()
     {
-        //Vector3 raw = Input.acceleration;
-
-        //// We're assuming the user holds the device in landscape mode (horizontal),
-        //// so we take X (left/right) and Y (up/down) as input axes
-        //calibratedOffset = new Vector2(raw.x, raw.y);
-        //tiltCalibrated = true;
-
-        //Debug.Log($"Tilt calibrated: {calibratedOffset}");
-
-        // Get the initial orientation (replace with your actual initial orientation)
-        Vector3 initialOrientation = Input.acceleration;
-
-        // Create a matrix to compensate for the initial orientation
-        calibrationMatrix = Matrix4x4.Rotate(Quaternion.LookRotation(-initialOrientation));
-    }
-
-    Vector3 GetCalibratedAcceleration()
-    {
-        // Apply the calibration to the raw acceleration data
-        return calibrationMatrix.MultiplyVector(Input.acceleration);
-    }
-
-    float NormalizeTilt(float raw, float neutral, float minInput, float maxInput)
-    {
-        if (raw < neutral)
-            return Mathf.InverseLerp(minInput, neutral, raw) * -1f;
-        else
-            return Mathf.InverseLerp(neutral, maxInput, raw);
+        calibratedOffset = Input.acceleration.y;
+        isCalibrated = true;
+        print(calibratedOffset);
     }
 }

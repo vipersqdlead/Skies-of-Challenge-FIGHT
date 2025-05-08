@@ -7582,9 +7582,38 @@ MonoBehaviour:
   playerCamera: {fileID: 0}
   cursorDistance: 1000
   moveSpeed: 40
-  useTiltControls: 0
-  tiltSensitivity: 20
+  useTiltControls: 1
+  tiltSensitivity: 40
+  sensitivityCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.049993146
+      value: 4.656613e-10
+      inSlope: 3.5006003
+      outSlope: 3.5006003
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.022317596
+    - serializedVersion: 3
+      time: 0.2488975
+      value: 0.99999964
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   mouseSensitivity: 40
+  tiltY: 0
+  tiltX: 0
+  normalizedY: 0
+  calibratedOffset: 0
+  isCalibrated: 0
 --- !u!114 &1994996906693939299
 MonoBehaviour:
   m_ObjectHideFlags: 0

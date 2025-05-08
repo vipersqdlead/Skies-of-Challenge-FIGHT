@@ -52,7 +52,7 @@ public class SurvivalMissionStatus : MonoBehaviour
             Fade(true);
             MissionTimer += Time.deltaTime;
             UpdateUI();
-            Pause();
+            //Pause();
             bgm.volume = bgmVolume.value;
         }
 
@@ -342,16 +342,13 @@ public class SurvivalMissionStatus : MonoBehaviour
         }
     }
 
-    void Pause()
+    public void Pause()
     {
-        PauseUI.SetActive(isPaused);
-        bgm.gameObject.SetActive(!isPaused);
+        print("Trying to pause");
         if (camListener != null)
         {
             camListener.enabled = !isPaused;
         }
-        if (Input.GetKeyDown(KeyCode.JoystickButton7) || Input.GetKeyDown(KeyCode.Escape))
-        {
             if (!isPaused)
             {
                 Time.timeScale = 0f;
@@ -365,20 +362,8 @@ public class SurvivalMissionStatus : MonoBehaviour
                 bgm.UnPause();
                 isPaused = false;
             }
-        }
-
-        if (isPaused)
-        {
-            if (Input.GetKeyDown(KeyCode.JoystickButton3))
-            {
-                buttonRetrying();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Joystick1Button4))
-            {
-                buttonReturnToMenu();
-            }
-        }
+        PauseUI.SetActive(isPaused);
+        bgm.gameObject.SetActive(!isPaused);
     }
 
     public void UnPause()

@@ -58,11 +58,9 @@ public class PlaneCamera : MonoBehaviour
 
         HandleCameraMode();
 
-        cameraParent.transform.localRotation = Quaternion.Slerp(
-            cameraParent.transform.localRotation,
-            targetRotation,
-            Time.fixedDeltaTime * camTransitionSpeed
-        );
+        //cameraParent.transform.rotation = targetRotation;
+
+        cameraParent.transform.localRotation = Quaternion.Lerp(cameraParent.transform.localRotation, targetRotation, Time.fixedDeltaTime * camTransitionSpeed);
 
         lookAngle = Vector2.one;
         {
@@ -163,10 +161,10 @@ public class PlaneCamera : MonoBehaviour
     float CalculateFoV()
     {
         float baseFoV = 50f;
-        float maxFoV = 85f;
+        float maxFoV = 80f;
 
         float speedPercent = 0f;
-        speedPercent = (hub.fm.currentSpeed * 100 / hub.fm.neverExceedSpeed) / 100f;
+        speedPercent = (hub.fm.currentSpeed / hub.fm.neverExceedSpeed) / 100f;
 
         float currentFoV = Mathf.Lerp(baseFoV, maxFoV, speedPercent);
         return currentFoV;

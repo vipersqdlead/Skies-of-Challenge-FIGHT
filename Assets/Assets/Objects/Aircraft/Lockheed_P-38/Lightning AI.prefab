@@ -11094,7 +11094,7 @@ MonoBehaviour:
   killcounter: {fileID: 6686903900661511475}
   planeCam: {fileID: 0}
   planeHUD: {fileID: 0}
-  meshRenderer: {fileID: 0}
+  meshRenderer: {fileID: 2575566436497690184}
   aircraftName: 
   speed_maxSpeed: 0
   power_maxPower: 0
