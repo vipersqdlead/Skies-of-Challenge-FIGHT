@@ -47,7 +47,7 @@ public class PlaneToUI : MonoBehaviour
     void Awake()
     {
         hub = GetComponent<AircraftHub>();
-        cam = hub.planeCam.camera;
+        cam = hub.planeCam.cam;
         engineControl = hub.engineControl;
         screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
     }

@@ -7581,22 +7581,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.049993146
-      value: 4.656613e-10
-      inSlope: 0.22596766
-      outSlope: 0.22596766
+      time: 0
+      value: 0
+      inSlope: 0.03280164
+      outSlope: 0.03280164
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.077253245
+      outWeight: 0.07656319
     - serializedVersion: 3
-      time: 0.18297952
-      value: 0.9930569
-      inSlope: 19.954483
-      outSlope: 19.954483
+      time: 1
+      value: 1
+      inSlope: -0.060951583
+      outSlope: -0.060951583
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.028132463
+      inWeight: 0.098255634
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -7722,7 +7722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41de3bde94199d243bd3bb18d865bb9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 4748838434362506145}
+  cam: {fileID: 4748838434362506145}
   cameraOffset: {x: 0, y: 5, z: -15}
   lookAngle: {x: 0, y: 0}
   movementScale: 0
@@ -7731,8 +7731,8 @@ MonoBehaviour:
   deathOffset: {x: 0, y: 0, z: 0}
   deathSensitivity: 0
   inputs: {fileID: 840625624679607077}
-  hub: {fileID: 0}
-  cameraTransform: {fileID: 0}
+  hub: {fileID: 6680854307914149069}
+  cameraTransform: {fileID: 8050209147527377871}
   camLockedTarget: {fileID: 0}
   cameraParent: {fileID: 2361016667495177559}
   camShaking: 0

@@ -843,6 +843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
+  hub: {fileID: 0}
   isGroundTgt: 0
   countsAsKill: 1
   pointsWorth: 530
@@ -1001,6 +1002,8 @@ MonoBehaviour:
   maxAngleOfAttack: 0
   rateOfClimb: 0
   machSpeed: 0
+  currentTurnRadius: 0
+  currentTurnRate: 0
   target: {fileID: 0}
   side: 0
   SpawnSpeed: 170
@@ -1061,24 +1064,6 @@ MonoBehaviour:
   PitchForce:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 3
-      time: -0.0018264822
-      value: -0.00094249257
-      inSlope: 0.84933877
-      outSlope: 0.84933877
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 1
-    - serializedVersion: 3
-      time: 0.18862483
-      value: 0.14758462
-      inSlope: 0.7912218
-      outSlope: 0.7912218
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.9730445
     - serializedVersion: 3
       time: 0.44621283
       value: 0.34424293
@@ -1157,7 +1142,7 @@ MonoBehaviour:
   steeringSpeed: 50
   minSpeed: 200
   maxSpeed: 300
-  recoverSpeedMin: 50
+  recoverSpeedMin: 36
   recoverSpeedMax: 100
   groundCollisionMask:
     serializedVersion: 2
@@ -1166,17 +1151,17 @@ MonoBehaviour:
   groundAvoidanceAngle: 20
   groundAvoidanceMinSpeed: 0
   groundAvoidanceMaxSpeed: 300
-  pitchUpThreshold: -15
+  pitchUpThreshold: -30
   fineSteeringAngle: 5
   rollFactor: 0.1
   yawFactor: 1
   currentState: {fileID: 1154141632238711180}
   guns: {fileID: 6567825561575381797}
   canUseCannon: 1
-  bulletSpeed: 500
+  bulletSpeed: 750
   cannonRange: 700
-  cannonMaxFireAngle: 45
-  cannonBurstLength: 3
+  cannonMaxFireAngle: 20
+  cannonBurstLength: 1
   cannonBurstCooldown: 1.5
   reactionDelayMin: 0
   reactionDelayMax: 1
@@ -1357,14 +1342,12 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   isAfterburningEngine: 1
-  useAirDensityMultiplier: 0
   afterBurner: 0
   afterburnerThrust: 3250
   engines:
   - {fileID: 4974088821847988974}
   engineSound:
   - {fileID: 9159847914512438149}
-  engineAfterburners: []
   engineVaporTrails:
   - {fileID: 7298900420339950230}
   enginePropellers:

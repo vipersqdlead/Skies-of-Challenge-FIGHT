@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlaneCamera : MonoBehaviour
 {
-    [SerializeField] public new Camera camera;
+    [SerializeField] public Camera cam;
     [SerializeField] Vector3 cameraOffset;
     [SerializeField] Vector2 lookAngle;
     [SerializeField] float movementScale;
@@ -21,10 +21,9 @@ public class PlaneCamera : MonoBehaviour
     public Transform cameraTransform;
     FlightModel plane;
     Transform planeTransform;
-    Vector2 lookInput;
     bool dead;
 
-    Vector2 look;
+    Vector2 look, lookInput;
     Vector2 lookAverage;
     Vector3 avAverage;
 
@@ -40,27 +39,24 @@ public class PlaneCamera : MonoBehaviour
     void Awake()
     {
         hub = GetComponent<AircraftHub>();
-        cameraTransform = camera.GetComponent<Transform>();
+        cameraTransform = cam.GetComponent<Transform>();
         plane = GetComponent<FlightModel>();
         inputs = GetComponent<PlayerInputs>();
         hp = plane.health;
-        cameraParent = camera.transform.parent.gameObject;
+        cameraParent = cam.transform.parent.gameObject;
     }
 
     void LateUpdate()
     {
-        lookInput.x = hub.fm.controlInput.z + hub.fm.controlInput.y;
-        lookInput.y = hub.fm.controlInput.x;
-
         var cameraOffset = this.cameraOffset;
 
-        camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, CalculateFoV(), Time.deltaTime * 10f);
+        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, CalculateFoV(), Time.deltaTime * 10f);
 
-        HandleCameraMode();
+        UpdateCameraTargetRotation();
 
         //cameraParent.transform.rotation = targetRotation;
 
-        cameraParent.transform.localRotation = Quaternion.Lerp(cameraParent.transform.localRotation, targetRotation, Time.fixedDeltaTime * camTransitionSpeed);
+        cameraParent.transform.localRotation = Quaternion.Lerp(cameraParent.transform.localRotation, targetRotation, 1f);
 
         lookAngle = Vector2.one;
         {
@@ -87,11 +83,6 @@ public class PlaneCamera : MonoBehaviour
     float sensitivity = 0.10f;
     Vector3 currentInputVector;
     Vector2 smoothVelocity;
-    void DampInputs()
-    {
-        Vector2 inputs = new Vector2(Input.GetAxis("HorizontalCameraRotation"), Input.GetAxis("VerticalCameraRotation"));
-        currentInputVector = Vector2.SmoothDamp(currentInputVector, inputs, ref smoothVelocity, sensitivity);
-    }
 
     float lastHP;
     void CamShake()
@@ -121,40 +112,14 @@ public class PlaneCamera : MonoBehaviour
         camShaking = false;
         yield return null;
     }
-
-    void HandleCameraMode()
-    {
-        if (Input.GetKey(KeyCode.C)) // Replace with your actual input check
-        {
-            currentMode = CameraMode.FreeLook;
-        }
-        else
-        {
-            currentMode = CameraMode.Tracking;  
-        }
-        
-        UpdateCameraTargetRotation();
-    }
-
     void UpdateCameraTargetRotation()
     {
-        switch (currentMode)
-        {
-            case CameraMode.FreeLook:
-                DampInputs();
-                targetRotation = Quaternion.Euler(new Vector3(currentInputVector.y * 90f, currentInputVector.x * 180f, 0));
-                break;
-
-            case CameraMode.Tracking:
-
                     // Get world-space LookAt rotation
                     Quaternion worldLookRotation = Quaternion.LookRotation(hub.playerInputs.targetCursorTransform.position - cameraParent.transform.position);
 
                     // Convert to local space relative to the player's aircraft
                     targetRotation = Quaternion.Inverse(hub.transform.rotation) * worldLookRotation;
-                
-                break;
-        }
+        
 
     }
 
