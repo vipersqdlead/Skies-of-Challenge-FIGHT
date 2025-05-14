@@ -1011,17 +1011,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5684954154815411445, guid: 37bfb7f5ed4a9b64c999ada4e2bead96, type: 3}
   m_PrefabInstance: {fileID: 333585566}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &333585569 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1175915633993513680, guid: 37bfb7f5ed4a9b64c999ada4e2bead96, type: 3}
-  m_PrefabInstance: {fileID: 333585566}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &333585570 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4407274166090784499, guid: 37bfb7f5ed4a9b64c999ada4e2bead96, type: 3}
@@ -1203,7 +1192,6 @@ MonoBehaviour:
   KillCountUI: {fileID: 1161421813}
   PointCount: {fileID: 756209680}
   TimeLeft: {fileID: 465381463}
-  newWaveText: {fileID: 333585569}
   enemiesLeftText: {fileID: 333585571}
   mapBoundaryWarning: {fileID: 531557797}
   mEnd_TimeBonus: {fileID: 675616751}
@@ -1213,6 +1201,7 @@ MonoBehaviour:
   mapBoundaryWarningLight: {fileID: 8300000, guid: f2569611a06eb7b448fa88663709e5cd, type: 3}
   mapBoundaryWarningStrong: {fileID: 8300000, guid: d2ca3aff3c96e464c814fbb713cdd5ec, type: 3}
   enemyFighters: []
+  targetEnemyQuantity: 0
 --- !u!114 &614393190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1231,6 +1220,7 @@ MonoBehaviour:
   - {fileID: 5069177628532559514, guid: 653b1896d911e6e4d85c915b60e710f0, type: 3}
   - {fileID: 5069177628532559514, guid: aa08010bad8237f43831375e32ffe494, type: 3}
   - {fileID: 5069177628532559514, guid: daf2c8ea49d44e84d87f0599105b42a2, type: 3}
+  - {fileID: 5069177628532559514, guid: 4cbee610d7fede449a6f708700f67720, type: 3}
   SpawnPositions:
   - {fileID: 309197038}
   - {fileID: 1638053559}

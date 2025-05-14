@@ -8,6 +8,7 @@ public class HealthPoints : MonoBehaviour
 {
     [Header("General Settings")]
     public bool isPlayer;
+    [SerializeField] AircraftHub hub;
     [SerializeField] bool isGroundTgt = false;
     [SerializeField] public bool countsAsKill = true;
     [SerializeField] public int pointsWorth;
@@ -32,6 +33,7 @@ public class HealthPoints : MonoBehaviour
 
     private void Start()
     {
+        hub = GetComponent<AircraftHub>();
         maxHP = HP;
         originalDef = Defense;
         hpPercent = maxHP * 100 / HP;
@@ -65,6 +67,7 @@ public class HealthPoints : MonoBehaviour
                     }
                 }
             }
+            hub.killcounter.StopCombo();
             return false;
         }
         else

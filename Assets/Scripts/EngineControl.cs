@@ -14,12 +14,10 @@ public class EngineControl : MonoBehaviour
     [SerializeField] AnimationCurve powerByAltitudeMultiplier;
     [SerializeField] AnimationCurve thrustBySpeedMultiplier;
     [SerializeField] bool isAfterburningEngine;
-    [SerializeField] bool useAirDensityMultiplier;
     public bool afterBurner = false;
     [SerializeField] public float afterburnerThrust;
     [SerializeField] public Transform[] engines;
     [SerializeField] AudioSource[] engineSound;
-    [SerializeField] ParticleSystem[] engineAfterburners;
     [SerializeField] TrailRenderer[] engineVaporTrails;
 
     [Header("Propellers")]
@@ -29,10 +27,6 @@ public class EngineControl : MonoBehaviour
     void Awake()
     {
         aircraft  = GetComponent<FlightModel>();
-        if (enginePropellers.Length != 0)
-        {
-            useAirDensityMultiplier = true;
-        }
     }
 
     // Update is called once per frame
@@ -93,14 +87,6 @@ public class EngineControl : MonoBehaviour
                 engine.volume = Mathf.Lerp(ThrottleInput, 0f, Time.deltaTime * 1f);
             }
 
-            if (isAfterburningEngine)
-            {
-                foreach (var engine in engineAfterburners)
-                {
-                    engine.gameObject.SetActive(false);
-                }
-            }
-
             foreach (var prop in enginePropellers)
             {
                 prop.transform.Rotate(0, 0, minSpeed * Time.fixedDeltaTime * 60f);
@@ -124,13 +110,6 @@ public class EngineControl : MonoBehaviour
                     engine.pitch = ThrottleInput;
                 }
 
-            }
-            if (isAfterburningEngine)
-            {
-                foreach (var engine in engineAfterburners)
-                {
-                    engine.gameObject.SetActive(afterBurner);
-                }
             }
             foreach (var vaporTrail in engineVaporTrails)
             {

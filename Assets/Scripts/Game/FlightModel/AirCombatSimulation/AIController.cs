@@ -147,12 +147,14 @@ public class AIController : MonoBehaviour , StateUser
         }
         targetInput.x = pitch;
 
-        if (Vector3.Angle(Vector3.forward, errorDir) < fineSteeringAngle)
-        {
-            var yaw = Vector3.SignedAngle(Vector3.forward, yawError, Vector3.up);
-            targetInput.y = yaw * yawFactor;
-        }
-        else
+        //if (Vector3.Angle(Vector3.forward, errorDir) < fineSteeringAngle)
+        //{
+        //    var yaw = Vector3.SignedAngle(Vector3.forward, yawError, Vector3.up);
+        //    targetInput.y = yaw * yawFactor;
+        //}
+        var yaw = Vector3.SignedAngle(Vector3.forward, yawError, Vector3.up);
+        targetInput.y = yaw * yawFactor;
+        if (Vector3.Angle(Vector3.forward, errorDir) > fineSteeringAngle)
         {
             var roll = Vector3.SignedAngle(Vector3.up, rollError, Vector3.forward);
             targetInput.z = roll * rollFactor;
@@ -286,16 +288,19 @@ public class AIController : MonoBehaviour , StateUser
     {
         var velocityRot = Quaternion.LookRotation(plane.rb.linearVelocity.normalized);
         var ray = new Ray(plane.rb.position, velocityRot * Quaternion.Euler(groundAvoidanceAngle, 0, 0) * Vector3.forward);
+        groundCollisionDistance = plane.currentTurnRadius * 0.9f;
 
-        ExecuteStateOnUpdate();
+        Vector3 rayDir = plane.rb.linearVelocity.normalized;
 
-        if (Physics.Raycast(ray, groundCollisionDistance + plane.localVelocity.z, groundCollisionMask.value))
+        //if (Physics.Raycast(ray, groundCollisionDistance + plane.localVelocity.z, groundCollisionMask.value) || plane.IAS_Speed >= plane.neverExceedSpeed)
+        if (Physics.Raycast(transform.position, rayDir, out RaycastHit hit, groundCollisionDistance))
         {
             steering = AvoidGround();
             plane.SetControlInput(steering);
             throttle = CalculateThrottle(groundAvoidanceMinSpeed, groundAvoidanceMaxSpeed);
             emergency = true;
         }
+
         else
         {
             if(targetPlane == null)

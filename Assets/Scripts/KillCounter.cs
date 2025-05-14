@@ -7,62 +7,35 @@ public class KillCounter : MonoBehaviour
     public int Kills = 0;
     public int Points = 0;
 
-    float comboBonusTimer = 10f;
     public bool comboCounting;
     public int currentCombo;
 
     private void Update()
     {
-        if (comboCounting)
-        {
-            comboBonusTimer -= Time.deltaTime;
-        }
 
-        if(comboBonusTimer < 0)
-        {
-            comboBonusTimer = 10f;
-            currentCombo = 0;
-            comboCounting = false;
-        }
     }
 
     public void GiveKill(bool countsAsKill, int points)
     {
-        if(comboCounting == false)
+        if (countsAsKill)
         {
-            if (countsAsKill)
-            {
-                Kills += 1;
-            }
-            Points += points;
-            comboCounting = true;
-            currentCombo = 1;
-            return;
+            Kills += 1;
         }
-        if (comboCounting == true)
-        {
-            if (countsAsKill)
-            {
-                Kills += 1;
-            }
-            comboBonusTimer = 10f;
-            currentCombo += 1;
-            Points += (points * currentCombo);
-            return;
-        }
+        currentCombo += 1;
+        Points += (points * (currentCombo + 1));
+        comboCounting = true;
+        return;
     }
 
     public void GivePoints(int points)
     {
-        if (comboCounting == false)
-        {
-            Points += points;
-            return;
-        }
-        if (comboCounting == true)
-        {
-            Points += (points * currentCombo);
-            return;
-        }
+        Points += (points * (currentCombo + 1));
+        return;
+    }
+
+    public void StopCombo()
+    {
+        currentCombo = 1;
+        comboCounting = false;
     }
 }

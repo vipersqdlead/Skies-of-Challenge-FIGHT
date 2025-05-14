@@ -14,7 +14,9 @@ public class FlightModel : MonoBehaviour
     [SerializeField] public float criticalAoA;
     public float maxAngleOfAttack;
     [SerializeField] public float rateOfClimb;
-    public float machSpeed;
+    public float machSpeed; 
+    public float currentTurnRadius;
+    public float currentTurnRate;
 
 
     [Header("Battle related")]
@@ -160,11 +162,16 @@ public class FlightModel : MonoBehaviour
 
     public void calculateControlForces(float pitch, float yaw, float roll)
     {
+        currentTurnRate = PitchForce.Evaluate(machSpeed) * 100f;
+
+        float turnRateRad = currentTurnRate * Mathf.Deg2Rad;
+        currentTurnRadius = currentSpeed / turnRateRad; // Result is in meters
+
         // Pitch force
         float pitchOutput = pitch * (PitchForce.Evaluate(machSpeed) * 100f);
         if(anims != null)
         {
-                pitchOutput -= anims.flapExtensionValue * (anims.flapExtensionAngle / 10f);
+            pitchOutput -= anims.flapExtensionValue * (anims.flapExtensionAngle / 10f);
         }
 
         // Yaw force
@@ -228,7 +235,7 @@ public class FlightModel : MonoBehaviour
     public Vector3 controlInput;
     public void SetControlInput(Vector3 input)
     {
-        float AoADampFactor = Mathf.Clamp01(maxAngleOfAttack - Mathf.Abs(angleOfAttack) / maxAngleOfAttack - criticalAoA);
+        float AoADampFactor = Mathf.Clamp01((maxAngleOfAttack - Mathf.Abs(angleOfAttack)) / (maxAngleOfAttack - criticalAoA));
         float dampedElevator = input.x * AoADampFactor;
         controlInput = new Vector3(dampedElevator, input.y, input.z);
         calculateControlForces(controlInput.x, controlInput.y, -controlInput.z);

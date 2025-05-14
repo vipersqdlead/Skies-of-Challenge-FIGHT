@@ -14919,6 +14919,8 @@ MonoBehaviour:
   maxAngleOfAttack: 0
   rateOfClimb: 0
   machSpeed: 0
+  currentTurnRadius: 0
+  currentTurnRate: 0
   target: {fileID: 0}
   side: 0
   SpawnSpeed: 170
@@ -14979,24 +14981,6 @@ MonoBehaviour:
   PitchForce:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 3
-      time: -0.0009132411
-      value: -0.0028274776
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.18980889
-      value: 0.1604453
-      inSlope: 1.5572406
-      outSlope: 1.5572406
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.09248465
     - serializedVersion: 3
       time: 0.60227287
       value: 0.34679085
@@ -15178,14 +15162,12 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   isAfterburningEngine: 1
-  useAirDensityMultiplier: 0
   afterBurner: 0
   afterburnerThrust: 2000
   engines:
   - {fileID: 6256722340276485250}
   engineSound:
   - {fileID: 7060275349053113483}
-  engineAfterburners: []
   engineVaporTrails:
   - {fileID: 8321966845241899340}
   enginePropellers:
@@ -15229,6 +15211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
+  hub: {fileID: 0}
   isGroundTgt: 0
   countsAsKill: 1
   pointsWorth: 570

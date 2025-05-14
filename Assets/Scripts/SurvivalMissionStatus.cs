@@ -32,7 +32,7 @@ public class SurvivalMissionStatus : MonoBehaviour
     public AudioListener camListener;
 
     [SerializeField] GameObject currentLockedTarget;
-    public TMP_Text KillCountUI, PointCount, TimeLeft, newWaveText, enemiesLeftText, mapBoundaryWarning, mEnd_TimeBonus, mEnd_PointScore, mEnd_FinalScore;
+    public TMP_Text KillCountUI, PointCount, TimeLeft, mapBoundaryWarning, mEnd_TimeBonus, mEnd_PointScore, mEnd_FinalScore;
     public AudioSource mapBoundaryWarningAS;
     public AudioClip mapBoundaryWarningLight, mapBoundaryWarningStrong;
 
@@ -42,6 +42,8 @@ public class SurvivalMissionStatus : MonoBehaviour
         playerAcHub = Player.GetComponent<AircraftHub>();
         MissionStart.GetComponent<AudioSource>().Play(); 
         bgmVolume.value = bgm.volume;
+        waveSpawner.PropSpawnWave(3);
+        CheckForRemainingFighters();
     }
 
     // Update is called once per frame
@@ -95,19 +97,16 @@ public class SurvivalMissionStatus : MonoBehaviour
             TimeLeft.color = Color.red;
             KillCountUI.color = Color.red;
             PointCount.color = Color.red;
-            enemiesLeftText.color = Color.red;
         }
         else
         {
             TimeLeft.color = Color.white;
             KillCountUI.color = Color.white;
             PointCount.color = Color.white;
-            enemiesLeftText.color = Color.red;
         }
         TimeLeft.text = "Time: " + (int)MissionTimer;
         KillCountUI.text = "Destroyed: " + KillCounter.Kills;
         PointCount.text = "Points: " + KillCounter.Points;
-        enemiesLeftText.text = enemyFighters.Count + " Enemies Left";
         BlackBG.fillClockwise = true;
 
         if (currentLockedTarget != playerAcHub.planeCam.camLockedTarget)
@@ -130,35 +129,10 @@ public class SurvivalMissionStatus : MonoBehaviour
     {
         print("Starting new wave");
         currentWave++;
-        newWaveText.enabled = true;
-        newWaveText.text = "Wave " + currentWave + " Inbound!";
-        newWaveText.gameObject.GetComponent<AudioSource>().PlayOneShot(newWaveText.gameObject.GetComponent<AudioSource>().clip);
 
-        {
-            if (currentWave <= 2)
-            {
-                waveSpawner.PropSpawnWave(1);
-            }
-            else if (currentWave > 2 && currentWave < 5)
-            {
-                waveSpawner.PropSpawnWave(2);
-            }
-            else if (currentWave > 5 && currentWave <= 8)
-            {
-                waveSpawner.PropSpawnWave(3);
-            }
-            else if (currentWave > 8 && currentWave < 10)
-            {
-                waveSpawner.PropSpawnWave(4);
-            }
-            else
-            {
-                waveSpawner.PropSpawnWave(6);
-            }
-        }
+        waveSpawner.PropSpawnWave(1);
 
         yield return new WaitForSeconds(5f);
-        newWaveText.enabled = false;
         startingwave = false;
         yield return null;
     }
@@ -321,6 +295,7 @@ public class SurvivalMissionStatus : MonoBehaviour
 
     bool startingwave = false;
     public List<FlightModel> enemyFighters;
+    public int targetEnemyQuantity;
     void CheckForRemainingFighters()
     {
         for (int i = 0; i < enemyFighters.Count; i++)
@@ -332,7 +307,9 @@ public class SurvivalMissionStatus : MonoBehaviour
             }
         }
 
-        if(enemyFighters.Count == 0)
+        targetEnemyQuantity = (int)GetTargetEnemies(Time.timeSinceLevelLoad);
+
+        if(enemyFighters.Count < targetEnemyQuantity)
         {
             if(!startingwave)
             {
@@ -340,6 +317,16 @@ public class SurvivalMissionStatus : MonoBehaviour
                 startingwave = true;
             }
         }
+    }
+
+    float GetTargetEnemies(float timeElapsed)
+    {
+        float baseCount = 3f;
+        float growthRate = 0.03f;
+        float maxEnemies = 25f;
+
+        float target = baseCount + timeElapsed * growthRate;
+        return Mathf.Min(target, maxEnemies);
     }
 
     public void Pause()
