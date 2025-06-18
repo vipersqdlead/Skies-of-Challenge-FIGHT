@@ -52,7 +52,7 @@ MonoBehaviour:
   - {fileID: 7005174183826454184, guid: 75011b561d1079e40abd5a650b53f5d5, type: 3}
   rateOfFireRPM: 750
   muzzleVelocity: 720
-  accuracyError: 0.0001
+  accuracyError: 0.001
   shot: {fileID: 0}
   rateOfFire: 0
   rofTimer: 0
@@ -113,7 +113,6 @@ GameObject:
   - component: {fileID: 810768066963378457}
   - component: {fileID: 7160021290123139819}
   - component: {fileID: 5160225766580429515}
-  - component: {fileID: -7352541962628100837}
   - component: {fileID: 7384599778373647072}
   m_Layer: 0
   m_Name: Yakovlev-u IA
@@ -611,54 +610,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e7a39b02566b64fba11c5355cb02d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fm: {fileID: 0}
+  fm: {fileID: 5896663728171600450}
   playerInputs: {fileID: 0}
   engineControl: {fileID: 0}
-  rb: {fileID: 0}
-  gunsControl: {fileID: 0}
-  planeToUI: {fileID: 0}
-  hp: {fileID: 0}
-  killcounter: {fileID: 0}
-  planeCam: {fileID: 0}
-  planeHUD: {fileID: 0}
-  meshRenderer: {fileID: 9139341028475973591}
-  aircraftName: 
-  speed_maxSpeed: 0
-  power_maxPower: 0
-  isJet: 0
-  engineNumber: 0
-  powerToWeight: 0
-  attack_totalBurstMass: 0
-  agility_maxTurnDegS: 0
-  agility_wingLoading: 0
-  agility_maxTurnSpeed: 0
-  agility_weight: 0
-  health_maxHP: 0
-  defense_def: 0
-  aircraftDescription: 
---- !u!114 &-7352541962628100837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1540922269036293049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60e7a39b02566b64fba11c5355cb02d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fm: {fileID: 0}
-  playerInputs: {fileID: 0}
-  engineControl: {fileID: 0}
-  rb: {fileID: 0}
+  rb: {fileID: 1540922269036293030}
   gunsControl: {fileID: 810768066963378457}
   planeToUI: {fileID: 0}
   hp: {fileID: 0}
   killcounter: {fileID: 0}
   planeCam: {fileID: 0}
   planeHUD: {fileID: 0}
-  meshRenderer: {fileID: 0}
+  meshRenderer: {fileID: 9139341028475973591}
   aircraftName: 
   speed_maxSpeed: 0
   power_maxPower: 0
@@ -874,7 +836,7 @@ MonoBehaviour:
   - {fileID: 7005174183826454184, guid: 75011b561d1079e40abd5a650b53f5d5, type: 3}
   rateOfFireRPM: 750
   muzzleVelocity: 720
-  accuracyError: 0.0001
+  accuracyError: 0.001
   shot: {fileID: 4978087634968705278}
   rateOfFire: 0
   rofTimer: 0
@@ -1578,7 +1540,7 @@ MonoBehaviour:
   - {fileID: 7005174183826454184, guid: 2e7a04207aa04a342930e626671d97d8, type: 3}
   rateOfFireRPM: 260
   muzzleVelocity: 780
-  accuracyError: 0.002
+  accuracyError: 0.005
   shot: {fileID: 608705996958402283}
   rateOfFire: 0
   rofTimer: 0
@@ -1608,8 +1570,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 100
-  MaxDistance: 1200
+  MinDistance: 85
+  MaxDistance: 1000
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0

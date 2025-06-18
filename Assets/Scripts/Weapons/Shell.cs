@@ -6,6 +6,7 @@ public class Shell : MonoBehaviour
 {
 
     public int ShellVelocity, DmgToAir, DmgToGrnd;
+	public Rigidbody rb;
     public bool isTracer;
     public bool isIncendiary;
     public bool selfDestruct;
@@ -14,6 +15,7 @@ public class Shell : MonoBehaviour
     public GameObject ExplosionSmaller;
     public AudioSource hitSound;
     public TrailRenderer trail;
+	public Collider[] collider;
 
     public delegate void KillEnemy(bool countsAsKill, int points);
     KillEnemy delKillEnemy;
@@ -41,12 +43,16 @@ public class Shell : MonoBehaviour
             trail = GetComponent<TrailRenderer>();
             trail.enabled = enabled;
         }
+		
+		collider = GetComponents<Collider>();
+		rb = GetComponent<Rigidbody>();
     }
 
     private void InstantiateExplosions()
     {
         Instantiate(ExplosionSmaller, transform.position, Quaternion.identity);
     }
+
 
     public void SetKillEnemyDelegate(KillEnemy killEnemyDel)
     {
@@ -60,7 +66,6 @@ public class Shell : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
         if (collision.collider.gameObject.GetComponent<HealthPoints>() != null)
         {
             HealthPoints hp = collision.collider.gameObject.GetComponent<HealthPoints>();
@@ -106,16 +111,23 @@ public class Shell : MonoBehaviour
         if (!collision.collider.CompareTag("Bullet"))
         {
             InstantiateExplosions();
-            Destroy(gameObject);
+            //Destroy(gameObject);
+			CheckToDestroy();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         Physics.IgnoreCollision(other, GetComponent<Collider>());
-        if (other.GetComponent<HealthPoints>() != null || other.CompareTag("Ground"))
+        if (other.GetComponent<HealthPoints>() != null || other.CompareTag("Ground") || other.CompareTag("Water"))
         {
             HealthPoints hp = other.gameObject.GetComponent<HealthPoints>();
+            if (hp == null)
+            {
+                InstantiateExplosions();
+				CheckToDestroy();
+                return;
+            }
             float damageDealt = (DmgToAir + Random.Range(-5f, 5f)) / hp.Defense;
             float critDefRandom = Random.Range(0, 100);
             if (critDefRandom < hp.CritRate)
@@ -146,8 +158,10 @@ public class Shell : MonoBehaviour
                     }
                 }
             }
-            InstantiateExplosions();
-            Destroy(gameObject);
+			{
+				InstantiateExplosions();
+				CheckToDestroy();
+			}
         }
     }
 
@@ -155,7 +169,64 @@ public class Shell : MonoBehaviour
     {
         if (selfDestruct)
         {
-            InstantiateExplosions();
+            //InstantiateExplosions();
         }
     }
+	
+	[SerializeField] Transform parent;
+	
+	public void Enable(Vector3 position, Quaternion rotation, Vector3 velocity, float timeToDisable, Transform _parent)
+	{
+		parent = _parent;
+		transform.parent = null;
+		transform.position = position;
+		transform.rotation = transform.rotation;
+		rb.AddForce(velocity, ForceMode.VelocityChange);
+        if (isTracer)
+		{
+			trail.Clear();
+		}
+		if(selfDestruct)
+		{
+			InstantiateExplosions();
+			return;
+		}
+	}
+
+	public void Disable(Transform _parent)
+	{
+		parent = _parent;
+		transform.parent = _parent;
+		//transform.SetParent(_parent);
+		rb.linearVelocity = Vector3.zero;
+		rb.angularVelocity = Vector3.zero;
+		gameObject.SetActive(false);
+        if (isTracer)
+		{
+			trail.Clear();
+		}
+	}
+	
+	public void Disable()
+	{
+		rb.linearVelocity = Vector3.zero;
+		rb.angularVelocity = Vector3.zero;
+		gameObject.SetActive(false);
+        if (isTracer)
+		{
+			trail.Clear();
+		}
+	}
+	
+	void CheckToDestroy()
+	{
+				if(parent != null)
+				{
+					Disable(parent);
+				}
+				else
+				{
+					Disable();
+				}
+	}
 }

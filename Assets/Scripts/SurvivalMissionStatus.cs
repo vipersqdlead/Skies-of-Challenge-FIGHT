@@ -33,6 +33,8 @@ public class SurvivalMissionStatus : MonoBehaviour
 
     [SerializeField] GameObject currentLockedTarget;
     public TMP_Text KillCountUI, PointCount, TimeLeft, mapBoundaryWarning, mEnd_TimeBonus, mEnd_PointScore, mEnd_FinalScore;
+	public Toggle inverseAxis;
+	public Slider sensitivityS;
     public AudioSource mapBoundaryWarningAS;
     public AudioClip mapBoundaryWarningLight, mapBoundaryWarningStrong;
 
@@ -336,6 +338,11 @@ public class SurvivalMissionStatus : MonoBehaviour
         {
             camListener.enabled = !isPaused;
         }
+		
+		playerAcHub.playerInputs.inverseYAxis = inverseAxis.isOn;
+		
+		playerAcHub.playerInputs.tiltSensitivity = Mathf.Lerp(10f, 40f, sensitivityS.value);
+		
             if (!isPaused)
             {
                 Time.timeScale = 0f;

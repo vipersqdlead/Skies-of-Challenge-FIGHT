@@ -11,6 +11,7 @@ public class Wave : MonoBehaviour
 
     public void AddRenderersToMarker(EnemyMarkers markers, SurvivalMissionStatus status, FlightModel player)
     {
+		/*
         for (int i = 0; i < aircraft.Length; i++)
         {
             markers.AddMarker(aircraft[i]);
@@ -19,7 +20,15 @@ public class Wave : MonoBehaviour
                 aircraft[i].fm.target = player;
             }
             status.enemyFighters.Add(aircraft[i].fm);
-        }
+        }*/
+		
+		foreach(AircraftHub ac in aircraft)
+		{
+			markers.AddMarker(ac);
+			ac.fm.target = player;
+			status.enemyFighters.Add(ac.fm);
+		}
+		
     }
 
     public void AddAllyRenderersToMarker(EnemyMarkers markers, SurvivalMissionStatus status)

@@ -10,12 +10,11 @@ public class EnemyMarkers : MonoBehaviour
     [SerializeField] List<Renderer> alliesRenderers;
     [SerializeField] List<GameObject> enemyMarkers, alliedMarkers;
     [SerializeField] GameObject markerPrefab, alliedMarkerPrefab, selectedTargetPrefab;
-    [SerializeField] GameObject targetLockedMarker;
     public Renderer targetLocked;
     Vector3 screenPos;
 
     public RadarMinimap minimap;
-
+/*
     void Start()
     {
         enemyRenderer = new List<Renderer>(enemiesToBeMarked.Count);
@@ -23,6 +22,8 @@ public class EnemyMarkers : MonoBehaviour
         enemyMarkers = new List<GameObject>(enemiesToBeMarked.Count);
         alliedMarkers = new List<GameObject>(alliesToBeMarked.Count);
         targetLockedMarker = new GameObject();
+
+
 
         for (int i = 0; i < enemiesToBeMarked.Count; i++)
         {
@@ -40,8 +41,8 @@ public class EnemyMarkers : MonoBehaviour
         {
             alliedMarkers.Add(Instantiate(alliedMarkerPrefab, alliesToBeMarked[i].transform.position, transform.rotation, this.transform));
         }
-        targetLockedMarker = Instantiate(selectedTargetPrefab, transform.position, transform.rotation, this.transform);
-    }
+        targetLockedMarker = Instantiate(selectedTargetPrefab, transform.position, transform.rotation, this.transform); 
+    } */
 
 
     void LateUpdate()
@@ -88,38 +89,6 @@ public class EnemyMarkers : MonoBehaviour
             {
                 alliedMarkers[i].SetActive(false);
             }
-        }
-
-        if (Camera.main == null || targetLocked == null)
-        {
-            targetLockedMarker.SetActive(false);
-        }
-        else if (Camera.main != null && targetLocked != null)
-        {
-            screenPos = Camera.main.WorldToScreenPoint(transform.position);
-            if (targetLocked.isVisible)
-            {
-                targetLockedMarker.SetActive(true);
-                targetLockedMarker.transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, targetLocked.transform.TransformPoint(Vector3.zero));
-            }
-
-            else
-            {
-                targetLockedMarker.SetActive(false);
-            }
-        }
-
-    }
-
-    public void AddMarker(GameObject objWithRenderer)
-    {
-        enemiesToBeMarked.Add(objWithRenderer);
-        enemyRenderer.Add(objWithRenderer.GetComponent<Renderer>());
-        enemyMarkers.Add(Instantiate(markerPrefab, objWithRenderer.transform.position, transform.rotation, this.transform));
-
-        if(minimap != null)
-        {
-            minimap.AddAllyBlip(objWithRenderer.transform, 0);
         }
     }
 

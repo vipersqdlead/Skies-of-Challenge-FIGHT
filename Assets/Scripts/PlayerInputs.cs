@@ -15,8 +15,8 @@ public class PlayerInputs : MonoBehaviour
     public float cursorDistance = 1000f;        // How far in front of the plane the cursor starts
     public float moveSpeed = 200f;              // How fast the cursor moves
     public bool useTiltControls;
-    public float tiltSensitivity = 5f;
-    public AnimationCurve sensitivityCurve;
+    public float tiltSensitivity, tiltDeadzone;
+	public bool inverseYAxis;
     public float mouseSensitivity = 40f;
 
     public float tiltY, tiltX;
@@ -38,7 +38,7 @@ public class PlayerInputs : MonoBehaviour
         Cursor.visible = false;
     }
 
-    void Update()
+    void FixedUpdate()
     {        
         if (useTiltControls && !isCalibrated)
         {
@@ -50,16 +50,29 @@ public class PlayerInputs : MonoBehaviour
 
     private void ReadInput()
     {
+		int inverse = 0;
+		if(inverseYAxis)
+		{
+			inverse = -1;
+		}
+		else
+		{
+			inverse = 1;
+		}
+		
         if (useTiltControls)
         {
             tiltY = Mathf.Clamp01(Mathf.Abs(Input.acceleration.y));
             tiltX = Input.acceleration.x;
 
-            normalizedY = Mathf.Lerp(-1f, 1f, Mathf.Clamp01(tiltY - 0.1f));
+            normalizedY = Mathf.Lerp(-1f, 1f, Mathf.Clamp01(tiltY));
 
-            float sensitivity = sensitivityCurve.Evaluate(Mathf.Clamp01(Mathf.Abs(Input.acceleration.y) + Mathf.Abs(Input.acceleration.x))) * tiltSensitivity;
+            if(normalizedY < tiltDeadzone && normalizedY > -tiltDeadzone)
+            {
+                normalizedY = 0f;
+            }
 
-            inputMovement = new Vector2(tiltX, -normalizedY) * sensitivity;
+            inputMovement = new Vector2(tiltX, normalizedY * inverse) * tiltSensitivity;
         }
         else
         {
@@ -89,7 +102,8 @@ public class PlayerInputs : MonoBehaviour
         localOffset.z = cursorDistance; // Always maintain forward distance
 
         // Apply the clamped position
-        targetCursorTransform.position = planeTransform.TransformPoint(localOffset);
+        //targetCursorTransform.position = Vector3.Lerp(planeTransform.TransformPoint(localOffset), targetCursorTransform.position, sensitivity);
+		targetCursorTransform.position = planeTransform.TransformPoint(localOffset);
     }
     void OnDrawGizmos()
     {

@@ -56,7 +56,9 @@ public class PlaneCamera : MonoBehaviour
 
         //cameraParent.transform.rotation = targetRotation;
 
-        cameraParent.transform.localRotation = Quaternion.Lerp(cameraParent.transform.localRotation, targetRotation, 1f);
+        cameraParent.transform.localRotation = targetRotation;
+		
+		//Quaternion.Lerp(cameraParent.transform.localRotation, targetRotation, 1f);
 
         lookAngle = Vector2.one;
         {

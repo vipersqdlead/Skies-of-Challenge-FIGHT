@@ -409,15 +409,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffafcbe90cdfc954dab83235e025e5fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shellTimer: 3
+  shellTimer: 5
   shells:
   - {fileID: 7005174183826454184, guid: 754312b58c958f5408c3208a08a05058, type: 3}
   - {fileID: 7005174183826454184, guid: 754312b58c958f5408c3208a08a05058, type: 3}
   - {fileID: 7005174183826454184, guid: 754312b58c958f5408c3208a08a05058, type: 3}
   - {fileID: 7005174183826454184, guid: 9e373d5c21a402141879b6bf45148ff5, type: 3}
+  shellList: []
   rateOfFireRPM: 550
   muzzleVelocity: 800
-  accuracyError: 0.0001
+  baseVelocity: 0
+  accuracyError: 0.001
   shot: {fileID: 7533204519348891505}
   rateOfFire: 0
   rofTimer: 0
@@ -425,6 +427,7 @@ MonoBehaviour:
   overheated: 0
   overheatResetTimer: 0
   overheatedRoF: 0
+  shotsFired: 0
   killCounter: {fileID: 5350997912003756959}
 --- !u!82 &7533204519348891505
 AudioSource:
@@ -5375,15 +5378,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffafcbe90cdfc954dab83235e025e5fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shellTimer: 3
+  shellTimer: 5
   shells:
   - {fileID: 7005174183826454184, guid: 754312b58c958f5408c3208a08a05058, type: 3}
   - {fileID: 7005174183826454184, guid: 754312b58c958f5408c3208a08a05058, type: 3}
   - {fileID: 7005174183826454184, guid: 754312b58c958f5408c3208a08a05058, type: 3}
   - {fileID: 7005174183826454184, guid: 9e373d5c21a402141879b6bf45148ff5, type: 3}
+  shellList: []
   rateOfFireRPM: 550
   muzzleVelocity: 800
-  accuracyError: 0.0001
+  baseVelocity: 0
+  accuracyError: 0.001
   shot: {fileID: 6201998616931188264}
   rateOfFire: 0
   rofTimer: 0
@@ -5391,6 +5396,7 @@ MonoBehaviour:
   overheated: 0
   overheatResetTimer: 0
   overheatedRoF: 0
+  shotsFired: 0
   killCounter: {fileID: 5350997912003756959}
 --- !u!82 &6201998616931188264
 AudioSource:
@@ -7410,10 +7416,8 @@ MonoBehaviour:
   agility_weight: 1900.0001
   health_maxHP: 80
   defense_def: 15
-  aircraftDescription: The backbone of the Hotamese Navy, the Zero was designed to
-    maximize agility, speed and range while using an old engine. This little plane
-    is unmatched in any turning contest, but lightness comes with fragility, and
-    it will not endure battle damage.
+  aircraftDescription: The Reisen was designed to maximize agility, speed and range
+    while using an old engine. This little plane is unmatched in any turning contest.
 --- !u!114 &5961288077834183134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7441,8 +7445,8 @@ MonoBehaviour:
   side: 1
   SpawnSpeed: 140
   rb: {fileID: 707189148789588757}
-  wingSpan: 11
-  wingArea: 21.3
+  wingSpan: 11.8
+  wingArea: 22.43
   wingType: 0
   sweepAngle: 0
   aspectRatio: 0
@@ -7577,30 +7581,7 @@ MonoBehaviour:
   moveSpeed: 40
   useTiltControls: 1
   tiltSensitivity: 40
-  sensitivityCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0.03280164
-      outSlope: 0.03280164
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.07656319
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: -0.060951583
-      outSlope: -0.060951583
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.098255634
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  tiltDeadzone: 0.05
   mouseSensitivity: 40
   tiltY: 0
   tiltX: 0
@@ -7678,11 +7659,11 @@ MonoBehaviour:
   isGroundTgt: 0
   countsAsKill: 0
   pointsWorth: 400
-  HP: 80
+  HP: 300
   hpPercent: 0
-  Defense: 15
+  Defense: 30
   CritRate: 50
-  extraLives: 0
+  extraLives: 2
   Explosion: {fileID: 1099838043991838807, guid: 0e6b37ee9ce548f469e5c719ee44f294, type: 3}
   destroyedObject: {fileID: 6185050561958779977, guid: 45bf6ae5e46e4864593d9c64fa328fe3, type: 3}
   smoke: {fileID: 564755191258220586}
@@ -7692,8 +7673,8 @@ MonoBehaviour:
   fire: {fileID: 839977210537692201}
   hitSound: {fileID: 5572871154435555317}
   fireSound: {fileID: 0}
-  invulnerable: 0
-  invulnerableTimer: 0
+  invulnerable: 1
+  invulnerableTimer: 30
 --- !u!114 &5350997912003756959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11375,15 +11356,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffafcbe90cdfc954dab83235e025e5fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shellTimer: 3
+  shellTimer: 5
   shells:
   - {fileID: 7005174183826454184, guid: a634e714261d77845b99574b3a69db4e, type: 3}
   - {fileID: 7005174183826454184, guid: 0a66811b75a303444b896d25c247326a, type: 3}
   - {fileID: 7005174183826454184, guid: a634e714261d77845b99574b3a69db4e, type: 3}
   - {fileID: 7005174183826454184, guid: cb49a454856bca449bd12970ccfdd0ca, type: 3}
+  shellList: []
   rateOfFireRPM: 800
   muzzleVelocity: 950
-  accuracyError: 0.0001
+  baseVelocity: 0
+  accuracyError: 0.001
   shot: {fileID: 2161407618439347622}
   rateOfFire: 0
   rofTimer: 0
@@ -11391,6 +11374,7 @@ MonoBehaviour:
   overheated: 0
   overheatResetTimer: 0
   overheatedRoF: 0
+  shotsFired: 0
   killCounter: {fileID: 5350997912003756959}
 --- !u!82 &2161407618439347622
 AudioSource:
@@ -11534,15 +11518,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffafcbe90cdfc954dab83235e025e5fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shellTimer: 3
+  shellTimer: 5
   shells:
   - {fileID: 7005174183826454184, guid: a634e714261d77845b99574b3a69db4e, type: 3}
   - {fileID: 7005174183826454184, guid: 0a66811b75a303444b896d25c247326a, type: 3}
   - {fileID: 7005174183826454184, guid: a634e714261d77845b99574b3a69db4e, type: 3}
   - {fileID: 7005174183826454184, guid: cb49a454856bca449bd12970ccfdd0ca, type: 3}
+  shellList: []
   rateOfFireRPM: 800
   muzzleVelocity: 950
-  accuracyError: 0.0001
+  baseVelocity: 0
+  accuracyError: 0.001
   shot: {fileID: 754160611055401101}
   rateOfFire: 0
   rofTimer: 0
@@ -11550,6 +11536,7 @@ MonoBehaviour:
   overheated: 0
   overheatResetTimer: 0
   overheatedRoF: 0
+  shotsFired: 0
   killCounter: {fileID: 5350997912003756959}
 --- !u!82 &754160611055401101
 AudioSource:

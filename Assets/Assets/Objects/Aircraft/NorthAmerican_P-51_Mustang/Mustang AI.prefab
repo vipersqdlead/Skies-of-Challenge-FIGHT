@@ -380,7 +380,7 @@ MonoBehaviour:
   - {fileID: 7005174183826454184, guid: a634e714261d77845b99574b3a69db4e, type: 3}
   rateOfFireRPM: 850
   muzzleVelocity: 1050
-  accuracyError: 0.0001
+  accuracyError: 0.001
   shot: {fileID: 534696320576563749}
   rateOfFire: 0
   rofTimer: 0
@@ -539,7 +539,7 @@ MonoBehaviour:
   - {fileID: 7005174183826454184, guid: a634e714261d77845b99574b3a69db4e, type: 3}
   rateOfFireRPM: 850
   muzzleVelocity: 1050
-  accuracyError: 0.0001
+  accuracyError: 0.001
   shot: {fileID: 2600901268021968526}
   rateOfFire: 0
   rofTimer: 0
@@ -837,7 +837,7 @@ MonoBehaviour:
   - {fileID: 7005174183826454184, guid: a634e714261d77845b99574b3a69db4e, type: 3}
   rateOfFireRPM: 850
   muzzleVelocity: 1050
-  accuracyError: 0.0001
+  accuracyError: 0.001
   shot: {fileID: 5954678039970295833}
   rateOfFire: 0
   rofTimer: 0
@@ -996,7 +996,7 @@ MonoBehaviour:
   - {fileID: 7005174183826454184, guid: a634e714261d77845b99574b3a69db4e, type: 3}
   rateOfFireRPM: 850
   muzzleVelocity: 1050
-  accuracyError: 0.0001
+  accuracyError: 0.001
   shot: {fileID: 5030810324251353389}
   rateOfFire: 0
   rofTimer: 0
@@ -2087,7 +2087,7 @@ MonoBehaviour:
   - {fileID: 7005174183826454184, guid: a634e714261d77845b99574b3a69db4e, type: 3}
   rateOfFireRPM: 850
   muzzleVelocity: 1050
-  accuracyError: 0.0001
+  accuracyError: 0.001
   shot: {fileID: 6579268364064577341}
   rateOfFire: 0
   rofTimer: 0
@@ -2246,7 +2246,7 @@ MonoBehaviour:
   - {fileID: 7005174183826454184, guid: a634e714261d77845b99574b3a69db4e, type: 3}
   rateOfFireRPM: 850
   muzzleVelocity: 1050
-  accuracyError: 0.0001
+  accuracyError: 0.001
   shot: {fileID: 4724422181824689423}
   rateOfFire: 0
   rofTimer: 0
