@@ -6,6 +6,7 @@ public class KillCounter : MonoBehaviour
 {
     public int Kills = 0;
     public int Points = 0;
+	public int hits = 0;
 
     public bool comboCounting;
     public int currentCombo;
@@ -24,12 +25,14 @@ public class KillCounter : MonoBehaviour
         currentCombo += 1;
         Points += (points * (currentCombo + 1));
         comboCounting = true;
+		hits++;
         return;
     }
 
     public void GivePoints(int points)
     {
         Points += (points * (currentCombo + 1));
+		hits++;
         return;
     }
 
@@ -37,5 +40,6 @@ public class KillCounter : MonoBehaviour
     {
         currentCombo = 1;
         comboCounting = false;
+		return;
     }
 }

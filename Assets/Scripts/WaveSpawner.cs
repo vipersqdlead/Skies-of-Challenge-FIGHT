@@ -6,6 +6,7 @@ public class WaveSpawner : MonoBehaviour
 {
     public FlightModel player;
     [SerializeField] List<GameObject> propWavePrefabs;
+	public GameObject herculesPrefab;
     [SerializeField] List<Transform> SpawnPositions;
     public EnemyMarkers markers;
     public SurvivalMissionStatus status;
@@ -21,6 +22,18 @@ public class WaveSpawner : MonoBehaviour
             //auxSpawnPositions.Remove(auxSpawnPositions[spawnRand]);
             newWave.GetComponent<Wave>().AddRenderersToMarker(markers, status, player);
         }
+    }
+	
+	public void HercSpawnWave()
+    {
+        List<Transform> auxSpawnPositions = SpawnPositions;
+		
+		int spawnRand = Random.Range(0, auxSpawnPositions.Count);
+        AircraftHub herc = Instantiate(herculesPrefab, auxSpawnPositions[spawnRand].position, auxSpawnPositions[spawnRand].rotation).GetComponent<AircraftHub>();
+        //auxSpawnPositions.Remove(auxSpawnPositions[spawnRand]);
+        	markers.AddMarker(herc);
+			herc.fm.target = player;
+			status.hercules.Add(herc.fm);
     }
 
     public void PropAlliedSpawnWave()

@@ -11,8 +11,7 @@ public class SurvivalMissionStatus : MonoBehaviour
 {
     public GameObject BattleUI, MissionSuccess, Retry, GameOverCamera, MissionStart, PauseUI;
     public KillCounter KillCounter;
-    public int points;
-    int kills;
+    public int points, kills, totalRoundsFired, autofireRoundsFired, manualRoundsFired, roundsHit, totalBattleTime, timeToFirstHighGTurn;
     public GameObject Player;
     public string aircraftName;
     [SerializeField] AircraftHub playerAcHub;
@@ -37,6 +36,7 @@ public class SurvivalMissionStatus : MonoBehaviour
 	public Slider sensitivityS;
     public AudioSource mapBoundaryWarningAS;
     public AudioClip mapBoundaryWarningLight, mapBoundaryWarningStrong;
+	public SimpleAnalytics analytics;
 
     void Start()
     {
@@ -46,6 +46,19 @@ public class SurvivalMissionStatus : MonoBehaviour
         bgmVolume.value = bgm.volume;
         waveSpawner.PropSpawnWave(3);
         CheckForRemainingFighters();
+		int _inverse = PlayerPrefs.GetInt("InverseY");
+		if(_inverse == 1)
+		{
+			inverseAxis.isOn = true;
+		}
+		else
+		{
+			inverseAxis.isOn = false;
+		}
+		sensitivityS.value = PlayerPrefs.GetFloat("Sensitivity", 0.7f);
+		playerAcHub.playerInputs.inverseYAxis = inverseAxis.isOn;
+		playerAcHub.playerInputs.tiltSensitivity = Mathf.Lerp(10f, 40f, sensitivityS.value);
+		analytics = GetComponent<SimpleAnalytics>();
     }
 
     // Update is called once per frame
@@ -76,8 +89,7 @@ public class SurvivalMissionStatus : MonoBehaviour
 
         if(Player != null)
         {
-            points = KillCounter.Points;
-            kills = KillCounter.Kills;
+			DataCollection();
         }
         if (Player == null)
         {
@@ -91,6 +103,18 @@ public class SurvivalMissionStatus : MonoBehaviour
             MissionRetry();
         }
     }
+	
+	void DataCollection()
+	{
+		points = KillCounter.Points;
+        kills = KillCounter.Kills;
+		totalRoundsFired = playerAcHub.gunsControl.mainGunroundsFired;
+		autofireRoundsFired = playerAcHub.gunsControl.autoRoundsFired;
+		manualRoundsFired = playerAcHub.gunsControl.manualRoundsFired;
+		roundsHit = KillCounter.hits;
+		totalBattleTime = (int)Time.time;
+		timeToFirstHighGTurn = 0;
+	}
 
     void UpdateUI()
     {
@@ -133,6 +157,18 @@ public class SurvivalMissionStatus : MonoBehaviour
         currentWave++;
 
         waveSpawner.PropSpawnWave(1);
+
+        yield return new WaitForSeconds(5f);
+        startingwave = false;
+        yield return null;
+    }
+	
+	IEnumerator StartHerculesWave()
+    {
+        print("Starting Herc wave");
+        currentWave++;
+
+        waveSpawner.HercSpawnWave();
 
         yield return new WaitForSeconds(5f);
         startingwave = false;
@@ -215,7 +251,7 @@ public class SurvivalMissionStatus : MonoBehaviour
             if (timerToMenu >= 10f)
             {
                 Time.timeScale = 1f;
-                SceneManager.LoadScene("SurvivalMenu");
+                SceneManager.LoadScene("SurvivalMission");
             }
         }
     }
@@ -297,6 +333,7 @@ public class SurvivalMissionStatus : MonoBehaviour
 
     bool startingwave = false;
     public List<FlightModel> enemyFighters;
+	public List<FlightModel> hercules;
     public int targetEnemyQuantity;
     void CheckForRemainingFighters()
     {
@@ -319,6 +356,18 @@ public class SurvivalMissionStatus : MonoBehaviour
                 startingwave = true;
             }
         }
+		
+		float targetHercsQuantity = (int)GetTargetHercs(Time.timeSinceLevelLoad);
+		
+		if(hercules.Count < targetHercsQuantity)
+        {
+            if(!startingwave)
+            {
+				StartCoroutine("StartHerculesWave");
+                startingwave = true;
+            }
+        }
+
     }
 
     float GetTargetEnemies(float timeElapsed)
@@ -330,6 +379,16 @@ public class SurvivalMissionStatus : MonoBehaviour
         float target = baseCount + timeElapsed * growthRate;
         return Mathf.Min(target, maxEnemies);
     }
+	
+	float GetTargetHercs(float timeElapsed)
+	{
+		float baseCount = 0f;
+        float growthRate = 0.01f;
+        float maxEnemies = 2f;
+
+        float target = baseCount + timeElapsed * growthRate;
+        return Mathf.Min(target, maxEnemies);
+	}
 
     public void Pause()
     {
@@ -417,4 +476,19 @@ public class SurvivalMissionStatus : MonoBehaviour
         PlayerPrefs.SetInt("General Total Kills", PlayerPrefs.GetInt("General Total Kills") + kills);
         PlayerPrefs.SetInt("General Total Fly Time", PlayerPrefs.GetInt("General Total Fly Time") + (int)MissionTimer);
     }
+	
+	void OnDisable()
+	{
+		PlayerPrefs.SetFloat("Sensitivity", sensitivityS.value);
+		if(inverseAxis.isOn == true)
+		{
+			PlayerPrefs.SetInt("InverseY", 1);
+		}
+		else
+		{
+			PlayerPrefs.SetInt("InverseY", 1);
+		}
+		
+		analytics.SendDataCollectionEvent(totalRoundsFired, autofireRoundsFired, manualRoundsFired, roundsHit, kills, totalBattleTime, timeToFirstHighGTurn);
+	}
 }

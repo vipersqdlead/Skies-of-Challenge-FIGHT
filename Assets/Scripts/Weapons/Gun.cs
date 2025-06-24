@@ -22,7 +22,7 @@ public class Gun : MonoBehaviour
     [SerializeField] float overheatResetTimer;
     [SerializeField] float overheatedRoF;
 	
-	public float shotsFired;
+	public int shotsFired;
 
     [SerializeField] KillCounter killCounter;
 

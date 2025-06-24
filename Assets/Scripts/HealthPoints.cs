@@ -67,7 +67,10 @@ public class HealthPoints : MonoBehaviour
                     }
                 }
             }
-            hub.killcounter.StopCombo();
+			if(isPlayer)
+			{
+				hub.killcounter.StopCombo();
+			}
             return false;
         }
         else

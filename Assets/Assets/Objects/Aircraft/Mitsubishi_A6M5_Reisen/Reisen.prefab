@@ -7445,16 +7445,16 @@ MonoBehaviour:
   side: 1
   SpawnSpeed: 140
   rb: {fileID: 707189148789588757}
-  wingSpan: 11.8
-  wingArea: 22.43
+  wingSpan: 118
+  wingArea: 224.3
   wingType: 0
   sweepAngle: 0
   aspectRatio: 0
-  drag: 0.007
+  drag: 0.003
   flaps: 0
   airbrake: 0
   stalling: 0
-  stallSpeed: 100
+  stallSpeed: 50
   neverExceedSpeed: 680
   RollForce:
     serializedVersion: 2
@@ -7462,15 +7462,15 @@ MonoBehaviour:
     - serializedVersion: 3
       time: -0.0018264822
       value: -0.004712463
-      inSlope: 0
-      outSlope: 0
+      inSlope: 14.348369
+      outSlope: 14.348369
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.22718462
     - serializedVersion: 3
-      time: 0.05437083
-      value: 0.5975934
+      time: 0.119647935
+      value: 1.6396161
       inSlope: 4.8919706
       outSlope: 4.8919706
       tangentMode: 0
@@ -7478,8 +7478,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.0691811
     - serializedVersion: 3
-      time: 0.3326025
-      value: 1.1401367
+      time: 0.33651826
+      value: 2.1161034
       inSlope: 0
       outSlope: 0
       tangentMode: 136
@@ -7535,14 +7535,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0.1014151
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
+      time: 0.0031724223
+      value: 0.19809027
+      inSlope: 0.3947781
+      outSlope: 0.3947781
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.26210925
     - serializedVersion: 3
       time: 0.9955673
       value: 0.061320752
@@ -7582,6 +7582,7 @@ MonoBehaviour:
   useTiltControls: 1
   tiltSensitivity: 40
   tiltDeadzone: 0.05
+  inverseYAxis: 0
   mouseSensitivity: 40
   tiltY: 0
   tiltX: 0
@@ -7610,6 +7611,9 @@ MonoBehaviour:
   trigger: 0
   useConvergence: 1
   convergencePoint: {x: 0, y: 0, z: 0}
+  mainGunroundsFired: 0
+  manualRoundsFired: 0
+  autoRoundsFired: 0
   sightLockedTarget: {fileID: 0}
 --- !u!114 &1316930332205353202
 MonoBehaviour:
@@ -7689,6 +7693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Kills: 0
   Points: 0
+  hits: 0
   comboCounting: 0
   currentCombo: 0
 --- !u!114 &2805436575942880223
@@ -8009,7 +8014,7 @@ MonoBehaviour:
   cannonBurstLength: 3
   cannonBurstCooldown: 1.5
   reactionDelayMin: 0
-  reactionDelayMax: 0.1
+  reactionDelayMax: 0.001
   reactionDelayDistance: 20
   isRecoveringSpeed: 0
   dodging: 0

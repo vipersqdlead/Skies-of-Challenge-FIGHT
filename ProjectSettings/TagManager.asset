@@ -25,6 +25,7 @@ TagManager:
   - BattleUI/Altitude
   - BattleUI/Power
   - BattleUI
+  - Water
   layers:
   - Default
   - TransparentFX
