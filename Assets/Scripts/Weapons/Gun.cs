@@ -17,10 +17,11 @@ public class Gun : MonoBehaviour
     public float rateOfFire; // This is used later, when firing.
     [SerializeField] float rofTimer; // Similar as the one above(?
 
-    [SerializeField]float overheatTimer;
+    float overheatTimer;
+	[SerializeField] float overheatTimerPercent;
     [SerializeField] bool overheated;
-    [SerializeField] float overheatResetTimer;
-    [SerializeField] float overheatedRoF;
+    float overheatResetTimer;
+    float overheatedRoF;
 	
 	public int shotsFired;
 
@@ -45,7 +46,9 @@ public class Gun : MonoBehaviour
 		{
 			rofTimer = rateOfFire;
 		}
-			
+		
+		overheatTimerPercent = Mathf.InverseLerp(0f, 10f, overheatTimer);
+		accuracyError = Mathf.Lerp(0.0005f, 0.01f, overheatTimerPercent);
 
         if (overheated)
         {
@@ -267,5 +270,13 @@ public class Gun : MonoBehaviour
         sh.SetHitBonusDelegate(HitBonus);
 		sh.Disable(transform);
 		return sh;
+	}
+	
+	void OnDestroy()
+	{
+		foreach(Shell shell in shellList)
+		{
+			Destroy(shell.gameObject);
+		}
 	}
 }

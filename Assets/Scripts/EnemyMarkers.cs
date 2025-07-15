@@ -7,9 +7,12 @@ public class EnemyMarkers : MonoBehaviour
     public List<GameObject> enemiesToBeMarked = new List<GameObject>();
     [SerializeField]List<Renderer> enemyRenderer;
     public List<GameObject> alliesToBeMarked;
+    public List<GameObject> herculesToBeMarked;
     [SerializeField] List<Renderer> alliesRenderers;
-    [SerializeField] List<GameObject> enemyMarkers, alliedMarkers;
-    [SerializeField] GameObject markerPrefab, alliedMarkerPrefab, selectedTargetPrefab;
+	[SerializeField] List<Renderer> herculesRenderers;
+    [SerializeField] List<GameObject> enemyMarkers;
+    [SerializeField] List<GameObject> herculesMarkers;
+    [SerializeField] GameObject markerPrefab, alliedMarkerPrefab, herculesMarkerPrefab, selectedTargetPrefab;
     public Renderer targetLocked;
     Vector3 screenPos;
 
@@ -69,6 +72,7 @@ public class EnemyMarkers : MonoBehaviour
             }
         }
 
+		/*
         for (int i = 0; i < alliesRenderers.Count; i++)
         {
             if (Camera.main != null && alliesRenderers[i] != null)
@@ -89,6 +93,28 @@ public class EnemyMarkers : MonoBehaviour
             {
                 alliedMarkers[i].SetActive(false);
             }
+        }*/
+		
+		for (int i = 0; i < herculesRenderers.Count; i++)
+        {
+            if (Camera.main != null && herculesRenderers[i] != null)
+            {
+                screenPos = Camera.main.WorldToScreenPoint(transform.position);
+                if (herculesRenderers[i].isVisible)
+                {
+                    herculesMarkers[i].SetActive(true);
+                    herculesMarkers[i].transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, herculesRenderers[i].transform.TransformPoint(Vector3.zero));
+                }
+
+                else
+                {
+                    herculesMarkers[i].SetActive(false);
+                }
+            }
+            else if (herculesRenderers[i] == null)
+            {
+                herculesMarkers[i].SetActive(false);
+            }
         }
     }
 
@@ -100,19 +126,19 @@ public class EnemyMarkers : MonoBehaviour
 
         if (minimap != null)
         {
-            minimap.AddAllyBlip(aircraftToAdd.transform, 0);
+            minimap.AddBlip(aircraftToAdd.transform, 0);
         }
     }
 
-    public void AddAllyMarker(AircraftHub aircraftToAdd)
+    public void AddHerculesMarker(AircraftHub aircraftToAdd)
     {
-        alliesToBeMarked.Add(aircraftToAdd.gameObject);
-        alliesRenderers.Add(aircraftToAdd.meshRenderer);
-        alliedMarkers.Add(Instantiate(alliedMarkerPrefab, aircraftToAdd.transform.position, transform.rotation, this.transform));
+        herculesToBeMarked.Add(aircraftToAdd.gameObject);
+        herculesRenderers.Add(aircraftToAdd.meshRenderer);
+        herculesMarkers.Add(Instantiate(herculesMarkerPrefab, aircraftToAdd.transform.position, transform.rotation, this.transform));
 
         if (minimap != null)
         {
-            minimap.AddAllyBlip(aircraftToAdd.transform, 1);
+            minimap.AddHercBlip(aircraftToAdd.transform);
         }
     }
 }

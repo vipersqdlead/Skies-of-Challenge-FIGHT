@@ -203,8 +203,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26
-  m_fontSizeBase: 26
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -339,8 +339,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26
-  m_fontSizeBase: 26
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -528,6 +528,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1209521843234380832, guid: 37bfb7f5ed4a9b64c999ada4e2bead96, type: 3}
+      propertyPath: hercBlipPrefab
+      value: 
+      objectReference: {fileID: 2998228553347368821, guid: 0c5b02c34709b0a4c875a475cd4e5d61, type: 3}
     - target: {fileID: 2103598632572819670, guid: 37bfb7f5ed4a9b64c999ada4e2bead96, type: 3}
       propertyPath: m_Name
       value: MissionSuccess
@@ -632,6 +636,10 @@ PrefabInstance:
       propertyPath: alliedMarkerPrefab
       value: 
       objectReference: {fileID: 5035681568204531362, guid: 65da87fa1ebb4d44e9f95397473f21fa, type: 3}
+    - target: {fileID: 4784542065627914834, guid: 37bfb7f5ed4a9b64c999ada4e2bead96, type: 3}
+      propertyPath: herculesMarkerPrefab
+      value: 
+      objectReference: {fileID: 3552116769158907716, guid: 297718926ca336a46bb5ffb3d881dd7e, type: 3}
     - target: {fileID: 4784542065627914834, guid: 37bfb7f5ed4a9b64c999ada4e2bead96, type: 3}
       propertyPath: selectedTargetPrefab
       value: 
@@ -1019,6 +1027,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &333585569 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9139763821912930222, guid: 37bfb7f5ed4a9b64c999ada4e2bead96, type: 3}
+  m_PrefabInstance: {fileID: 333585566}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &333585570 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4407274166090784499, guid: 37bfb7f5ed4a9b64c999ada4e2bead96, type: 3}
@@ -1197,6 +1216,7 @@ MonoBehaviour:
   KillCountUI: {fileID: 1161421813}
   PointCount: {fileID: 756209680}
   TimeLeft: {fileID: 465381463}
+  newWaveText: {fileID: 333585569}
   mapBoundaryWarning: {fileID: 531557797}
   mEnd_TimeBonus: {fileID: 675616751}
   mEnd_PointScore: {fileID: 202337282}
@@ -1421,8 +1441,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26
-  m_fontSizeBase: 26
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

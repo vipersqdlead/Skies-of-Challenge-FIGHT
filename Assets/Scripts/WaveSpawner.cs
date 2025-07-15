@@ -31,15 +31,16 @@ public class WaveSpawner : MonoBehaviour
 		int spawnRand = Random.Range(0, auxSpawnPositions.Count);
         AircraftHub herc = Instantiate(herculesPrefab, auxSpawnPositions[spawnRand].position, auxSpawnPositions[spawnRand].rotation).GetComponent<AircraftHub>();
         //auxSpawnPositions.Remove(auxSpawnPositions[spawnRand]);
-        	markers.AddMarker(herc);
+        	markers.AddHerculesMarker(herc);
 			herc.fm.target = player;
 			status.hercules.Add(herc.fm);
     }
 
+	/*
     public void PropAlliedSpawnWave()
     {
         GameObject newWave = Instantiate(propWavePrefabs[Random.Range(0, propWavePrefabs.Count)], new Vector3(0, 4000f, 0), transform.rotation);
         //auxSpawnPositions.Remove(auxSpawnPositions[spawnRand]);
         newWave.GetComponent<Wave>().AddAllyRenderersToMarker(markers, status);
-    }
+    }*/
 }

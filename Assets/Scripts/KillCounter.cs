@@ -38,7 +38,7 @@ public class KillCounter : MonoBehaviour
 
     public void StopCombo()
     {
-        currentCombo = 1;
+        currentCombo = 0;
         comboCounting = false;
 		return;
     }

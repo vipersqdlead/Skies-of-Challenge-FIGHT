@@ -11,7 +11,7 @@ public class RadarMinimap : MonoBehaviour
 
     public RectTransform minimapContainer; // UI Panel for the minimap
     public RectTransform playerIcon; // UI Element for player
-    public RectTransform enemyBlipPrefab, allyBlipPrefab; // Prefab for ally/enemy icons
+    public RectTransform enemyBlipPrefab, hercBlipPrefab; // Prefab for ally/enemy icons
 
     public Transform player; // Player's transform
     public float radarSize = 100f; // Size of the radar in UI space
@@ -19,24 +19,28 @@ public class RadarMinimap : MonoBehaviour
 
     public List<Transform> allies;
     public List<Transform> enemies;
+    public List<Transform> hercules;
 
     private List<RectTransform> enemyBlips = new List<RectTransform>();
+    private List<RectTransform> herculesBlips = new List<RectTransform>();
     private List<RectTransform> allyBlips = new List<RectTransform>();
 
     void Start()
     {
+		/*
         foreach(GameObject obj in markers.alliesToBeMarked)
         {
             allies.Add(obj.transform);
-        }
+        }*/
 
         foreach(GameObject obj in markers.enemiesToBeMarked)
         {
             enemies.Add(obj.transform);
         }
         // Create blips for all allies and enemies
-        foreach (var unit in allies) AddAllyBlip(unit);
+        //foreach (var unit in allies) AddAllyBlip(unit);
         foreach (var unit in enemies) AddEnemyBlip(unit);
+        foreach (var unit in hercules) AddEnemyBlip(unit);
     }
 
     void LateUpdate()
@@ -49,13 +53,7 @@ public class RadarMinimap : MonoBehaviour
         RectTransform newBlip = Instantiate(enemyBlipPrefab, minimapContainer);
         enemyBlips.Add(newBlip);
     }
-
-    void AddAllyBlip(Transform unit)
-    {
-        RectTransform newBlip = Instantiate(allyBlipPrefab, minimapContainer);
-        allyBlips.Add(newBlip);
-    }
-
+	
     void UpdateBlips()
     {
         for (int i = 0; i < enemies.Count; i++)
@@ -74,7 +72,26 @@ public class RadarMinimap : MonoBehaviour
                 UpdateBlipPosition(enemyBlips[i], enemies[i].position);
             }
         }
-
+		
+		for (int i = 0; i < hercules.Count; i++)
+        {
+            if (hercules[i] == null)
+            {
+                if (herculesBlips[i] != null)
+                {
+                    herculesBlips[i].gameObject.SetActive(false);
+                }
+                herculesBlips.RemoveAt(i);
+                hercules.RemoveAt(i);
+            }
+            else if(hercules[i] != null && herculesBlips[i] != null)
+            {
+                UpdateBlipPosition(herculesBlips[i], hercules[i].position);
+            }
+        }
+		
+		
+		/*
         for (int i = 0; i < allies.Count; i++)
         {
             if (allies[i] == null)
@@ -91,7 +108,7 @@ public class RadarMinimap : MonoBehaviour
                 UpdateBlipPosition(allyBlips[i], allies[i].position);
             }
 
-        }
+        }*/
     }
 
     void UpdateBlipPosition(RectTransform blip, Vector3 worldPos)
@@ -111,17 +128,19 @@ public class RadarMinimap : MonoBehaviour
         blip.anchoredPosition = minimapPos;
     }
 
-    public void AddAllyBlip(Transform newBlip, int side)
+    public void AddBlip(Transform newBlip, int side)
     {
         if (side == 0)
         {
             AddEnemyBlip(newBlip);
             enemies.Add(newBlip);
         }
-        else
-        {
-            AddAllyBlip(newBlip);
-            allies.Add(newBlip);
-        }
     }
+	
+	public void AddHercBlip(Transform newBlip)
+	{
+        RectTransform hercBlip = Instantiate(hercBlipPrefab, minimapContainer);
+        herculesBlips.Add(hercBlip);
+        hercules.Add(newBlip);
+	}
 }

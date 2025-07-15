@@ -31,6 +31,7 @@ public class Wave : MonoBehaviour
 		
     }
 
+	/*
     public void AddAllyRenderersToMarker(EnemyMarkers markers, SurvivalMissionStatus status)
     {
         for (int i = 0; i < aircraft.Length; i++)
@@ -40,5 +41,5 @@ public class Wave : MonoBehaviour
             aircraft[i].fm.health.pointsWorth = -1000;
             markers.AddAllyMarker(aircraft[i]);
         }
-    }
+    }*/
 }

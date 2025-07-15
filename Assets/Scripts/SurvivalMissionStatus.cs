@@ -31,7 +31,7 @@ public class SurvivalMissionStatus : MonoBehaviour
     public AudioListener camListener;
 
     [SerializeField] GameObject currentLockedTarget;
-    public TMP_Text KillCountUI, PointCount, TimeLeft, mapBoundaryWarning, mEnd_TimeBonus, mEnd_PointScore, mEnd_FinalScore;
+    public TMP_Text KillCountUI, PointCount, TimeLeft, newWaveText, mapBoundaryWarning, mEnd_TimeBonus, mEnd_PointScore, mEnd_FinalScore;
 	public Toggle inverseAxis;
 	public Slider sensitivityS;
     public AudioSource mapBoundaryWarningAS;
@@ -68,10 +68,19 @@ public class SurvivalMissionStatus : MonoBehaviour
         {
             Fade(true);
             MissionTimer += Time.deltaTime;
+			if(timeToFirstHighGTurn == 0f)
+			{
+				if(playerAcHub.fm.gForce > 4.5f)
+				{
+					timeToFirstHighGTurn = (int)MissionTimer;
+				}
+			}
             UpdateUI();
             //Pause();
             bgm.volume = bgmVolume.value;
         }
+		
+
 
         if (reloadingMission)
         {
@@ -112,8 +121,7 @@ public class SurvivalMissionStatus : MonoBehaviour
 		autofireRoundsFired = playerAcHub.gunsControl.autoRoundsFired;
 		manualRoundsFired = playerAcHub.gunsControl.manualRoundsFired;
 		roundsHit = KillCounter.hits;
-		totalBattleTime = (int)Time.time;
-		timeToFirstHighGTurn = 0;
+		totalBattleTime = (int)MissionTimer;
 	}
 
     void UpdateUI()
@@ -153,7 +161,6 @@ public class SurvivalMissionStatus : MonoBehaviour
 
     IEnumerator StartNewWave()
     {
-        print("Starting new wave");
         currentWave++;
 
         waveSpawner.PropSpawnWave(1);
@@ -167,11 +174,15 @@ public class SurvivalMissionStatus : MonoBehaviour
     {
         print("Starting Herc wave");
         currentWave++;
+		
+		newWaveText.gameObject.SetActive(true);
 
         waveSpawner.HercSpawnWave();
 
-        yield return new WaitForSeconds(5f);
-        startingwave = false;
+        yield return new WaitForSeconds(6f);
+        newWaveText.gameObject.SetActive(false);
+		yield return new WaitForSeconds(30f);
+        startingHercwave = false;
         yield return null;
     }
 
@@ -332,6 +343,7 @@ public class SurvivalMissionStatus : MonoBehaviour
     }
 
     bool startingwave = false;
+	bool startingHercwave = false;
     public List<FlightModel> enemyFighters;
 	public List<FlightModel> hercules;
     public int targetEnemyQuantity;
@@ -357,14 +369,23 @@ public class SurvivalMissionStatus : MonoBehaviour
             }
         }
 		
+		for (int i = 0; i < hercules.Count; i++)
+        {
+            if(hercules[i] == null)
+            {
+                hercules.RemoveAt(i);
+                return;
+            }
+        }
+		
 		float targetHercsQuantity = (int)GetTargetHercs(Time.timeSinceLevelLoad);
 		
 		if(hercules.Count < targetHercsQuantity)
         {
-            if(!startingwave)
+            if(!startingHercwave)
             {
 				StartCoroutine("StartHerculesWave");
-                startingwave = true;
+                startingHercwave = true;
             }
         }
 
@@ -374,7 +395,7 @@ public class SurvivalMissionStatus : MonoBehaviour
     {
         float baseCount = 3f;
         float growthRate = 0.03f;
-        float maxEnemies = 25f;
+        float maxEnemies = 10f;
 
         float target = baseCount + timeElapsed * growthRate;
         return Mathf.Min(target, maxEnemies);
@@ -383,8 +404,8 @@ public class SurvivalMissionStatus : MonoBehaviour
 	float GetTargetHercs(float timeElapsed)
 	{
 		float baseCount = 0f;
-        float growthRate = 0.01f;
-        float maxEnemies = 2f;
+        float growthRate = 0.0175f;
+        float maxEnemies = 1f;
 
         float target = baseCount + timeElapsed * growthRate;
         return Mathf.Min(target, maxEnemies);

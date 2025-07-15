@@ -226,7 +226,8 @@ public class Shell : MonoBehaviour
 				}
 				else
 				{
-					Disable();
+					Destroy(gameObject);
+					//Disable();
 				}
 	}
 }

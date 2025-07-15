@@ -92,7 +92,7 @@ public class AIController : MonoBehaviour , StateUser
         {
             roll -= 360f;
         }
-        return new Vector3(-1, 0, Mathf.Clamp(-roll * rollFactor, -1, 1));
+        return new Vector3(-1f, 0f, Mathf.Clamp(-roll * rollFactor, -1f, 1f));
     }
 
     public Vector3 RecoverSpeed()
@@ -109,7 +109,7 @@ public class AIController : MonoBehaviour , StateUser
             pitch -= 360f;
         }
 
-        return new Vector3(Mathf.Clamp(-pitch, -1, 1), 0, Mathf.Clamp(-roll * rollFactor, -1, 1));
+        return new Vector3(Mathf.Clamp(-pitch, -1f, 1f), 0f, Mathf.Clamp(-roll * rollFactor, -1f, 1f));
     }
 
     public Vector3 GetTargetPosition()
@@ -134,9 +134,9 @@ public class AIController : MonoBehaviour , StateUser
         error = Quaternion.Inverse(plane.rb.rotation) * error;   //transform into local space
 
         var errorDir = error.normalized;
-        var pitchError = new Vector3(0, error.y, error.z).normalized;
-        var rollError = new Vector3(error.x, error.y, 0).normalized;
-        var yawError = new Vector3(error.x, 0, error.z).normalized;
+        var pitchError = new Vector3(0f, error.y, error.z).normalized;
+        var rollError = new Vector3(error.x, error.y, 0f).normalized;
+        var yawError = new Vector3(error.x, 0f, error.z).normalized;
 
         var targetInput = new Vector3();
 
@@ -160,9 +160,9 @@ public class AIController : MonoBehaviour , StateUser
             targetInput.z = roll * rollFactor;
         }
 
-        targetInput.x = Mathf.Clamp(targetInput.x, -1, 1);
-        targetInput.y = Mathf.Clamp(targetInput.y, -1, 1);
-        targetInput.z = Mathf.Clamp(targetInput.z, -1, 1);
+        targetInput.x = Mathf.Clamp(targetInput.x, -1f, 1f);
+        targetInput.y = Mathf.Clamp(targetInput.y, -1f, 1f);
+        targetInput.z = Mathf.Clamp(targetInput.z, -1f, 1f);
 
         var input = Vector3.MoveTowards(lastInput, targetInput, steeringSpeed * Time.deltaTime);
         lastInput = input;
@@ -172,7 +172,7 @@ public class AIController : MonoBehaviour , StateUser
 
     public float CalculateThrottle(float minSpeed, float maxSpeed)
     {
-        float input = 0;
+        float input = 0f;
 
         if (plane.localVelocity.z < minSpeed)
         {
