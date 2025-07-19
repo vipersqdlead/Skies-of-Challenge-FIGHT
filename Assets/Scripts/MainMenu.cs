@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
-using static SurvivalSettings;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -12,114 +12,44 @@ public class MainMenu : MonoBehaviour
     public AudioSource BGM;
     bool loadMission;
     int scenetoLoad;
-    [SerializeField] int quickGameAircraftSelectionLimit;
-    [SerializeField] GameObject missionSelector;
-    [SerializeField] MenuType menuType;
 
-    [SerializeField] TMP_Text maxScoreTxt, lastScoreTxt;
-    [SerializeField] GameObject controlsButton, controlsText;
+    [SerializeField] TMP_Text startText;
+    [SerializeField] GameObject controlsButton;
+	
+	public Toggle inverseAxis;
+	public Slider sensitivityS;
+    public Slider bgmVolume;
+	
+	[SerializeField] float startAlpha;
 
-    public enum MenuType
-    {
-        MainMenu,
-        ResultsMenu,
-        MissionSelectorMenu,
-        EndingMenu
-    }
-
-    // Start is called before the first frame update
     void Start()
     {
         fadeinOut.ActivateFadeIn = true;
-        if(menuType == MenuType.MainMenu)
-        {
-            maxScoreTxt.text = "Best Score: " + PlayerPrefs.GetInt("MaxScore") + " pts.";
-            lastScoreTxt.text = "Last Score: " + PlayerPrefs.GetInt("LastScore") + " pts.";
-        }
     }
 
     float timerToLoad;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F2))
+		startAlpha = Mathf.Abs(Mathf.Sin(Time.time * 3f));
+		
+        if (loadMission == true)
         {
-            PlayerPrefs.DeleteAll();
-            CloseGame();
-        }
-
-        if (Input.GetKeyDown(KeyCode.F3))
-        {
-            PlayerPrefs.SetInt("MissionSelectKey", 1);
-            CloseGame();
-        }
-
-        if (loadMission ==true)
-        {
+		    startAlpha = Mathf.Abs(Mathf.Sin(Time.time * 10f));
             BGM.volume -= Time.deltaTime;
             timerToLoad += Time.deltaTime;
-            if(timerToLoad > 2)
+            if(timerToLoad > 2f)
             {
                 LoadScene(scenetoLoad);
             }
         }
-
-        switch (menuType)
-        {
-            case MenuType.MainMenu:
-                {
-                    ////if (Input.GetKeyDown(KeyCode.JoystickButton0))
-                    ////{
-                    ////    LoadMissionButton(1);
-                    ////}
-
-                    //if (PlayerPrefs.GetInt("MissionSelectKey") == 1)
-                    //{
-                    //    if (Input.GetAxis("FireWeapon2") != 0)
-                    //    {
-                    //        LoadMissionButton(13);
-                    //    }
-                    //}
-
-                    //if (Input.GetAxis("Zoom") != 0)
-                    //{
-                    //    CloseGame();
-                    //}
-
-                    //if (Input.GetKeyDown(KeyCode.JoystickButton6))
-                    //{
-                    //    controlsButton.SetActive(false); controlsText.SetActive(true);
-                    //}
-                    break;
-                }
-            case MenuType.ResultsMenu:
-                {
-                    if (Input.GetAxis("FireCannon") != 0)
-                    {
-                        LoadMissionButton(0);
-                    }
-                    break;
-                }
-            case MenuType.MissionSelectorMenu:
-                {
-                    if (Input.GetAxis("FireWeapon2") != 0)
-                    {
-                        LoadMissionButton(0);
-                    }
-                    break;
-                }
-            case MenuType.EndingMenu:
-                {
-                    if (Input.GetAxis("FireCannon") != 0)
-                    {
-                        LoadMissionButton(12);
-                    }
-                    break;
-                }
-        }
+		
+		var Color = startText.color;
+		Color.a = startAlpha;
+		startText.color = Color;
     }
+	
     public void LoadMissionButton(int sceneNo)
     {
-        print("Fade");
         fadeinOut.ActivateFadeOut = true;
         loadMission = true;
         scenetoLoad = sceneNo;
@@ -132,17 +62,28 @@ public class MainMenu : MonoBehaviour
 
     public void QuickPlay()
     {
-        PlayerPrefs.SetInt("Survival Aircraft", Random.Range(0, quickGameAircraftSelectionLimit));
-        PlayerPrefs.SetInt("Survival Map", Random.Range(0, 10));
-        LoadMissionButton(16);
+        LoadMissionButton(1);
     }
 
     public void CloseGame()
     {
-        BGM.volume -= Time.deltaTime;
         fadeinOut.ActivateFadeOut = true;
         Invoke("Quit", 1.8f);
     }
+	
+	void OnDisable()
+	{
+		PlayerPrefs.SetFloat("Sensitivity", sensitivityS.value);
+		if(inverseAxis.isOn == true)
+		{
+			PlayerPrefs.SetInt("InverseY", 1);
+		}
+		else
+		{
+			PlayerPrefs.SetInt("InverseY", 1);
+		}
+		PlayerPrefs.SetFloat("Volume", bgmVolume.value);
+	}
 
     void Quit()
     {

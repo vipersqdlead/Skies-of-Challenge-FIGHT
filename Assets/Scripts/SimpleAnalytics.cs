@@ -25,6 +25,7 @@ public class SimpleAnalytics : MonoBehaviour
 		public int AAenemiesKilled { set { SetParameter("AAenemiesKilled", value); } }
 		public int AAtotalBattleTime { set { SetParameter("AAtotalBattleTime", value); } }
 		public int AAtimeToFirstHighGTurn { set { SetParameter("AAtimeToFirstHighGTurn", value); } }
+		public int AAhighestCombo { set { SetParameter("AAhighestCombo", value); } }
 	}
 	
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -50,7 +51,7 @@ public class SimpleAnalytics : MonoBehaviour
         
     }
 	
-	public void SendDataCollectionEvent(int totalRoundsFired, int autofireRoundsFired, int manualRoundsFired, int roundsHit, int enemiesKilled, int totalBattleTime, int timeToFirstHighGTurn)
+	public void SendDataCollectionEvent(int totalRoundsFired, int autofireRoundsFired, int manualRoundsFired, int roundsHit, int enemiesKilled, int totalBattleTime, int timeToFirstHighGTurn, int highestCombo)
 	{
 		try
 		{
@@ -62,7 +63,8 @@ public class SimpleAnalytics : MonoBehaviour
 				AAroundsHit = roundsHit,
 				AAenemiesKilled = enemiesKilled,
 				AAtotalBattleTime = totalBattleTime,
-				AAtimeToFirstHighGTurn = timeToFirstHighGTurn
+				AAtimeToFirstHighGTurn = timeToFirstHighGTurn,
+				AAhighestCombo = highestCombo
 			};
 			AnalyticsService.Instance.RecordEvent(evento);
 			Debug.Log($"Event sent - Time: {Time.time:F1}s");

@@ -11,7 +11,7 @@ public class SurvivalMissionStatus : MonoBehaviour
 {
     public GameObject BattleUI, MissionSuccess, Retry, GameOverCamera, MissionStart, PauseUI;
     public KillCounter KillCounter;
-    public int points, kills, totalRoundsFired, autofireRoundsFired, manualRoundsFired, roundsHit, totalBattleTime, timeToFirstHighGTurn;
+    public int points, kills, totalRoundsFired, autofireRoundsFired, manualRoundsFired, roundsHit, highestCombo, totalBattleTime, timeToFirstHighGTurn;
     public GameObject Player;
     public string aircraftName;
     [SerializeField] AircraftHub playerAcHub;
@@ -42,8 +42,8 @@ public class SurvivalMissionStatus : MonoBehaviour
     {
         Fade(true);
         playerAcHub = Player.GetComponent<AircraftHub>();
-        MissionStart.GetComponent<AudioSource>().Play(); 
-        bgmVolume.value = bgm.volume;
+        MissionStart.GetComponent<AudioSource>().Play();
+		bgmVolume.value = PlayerPrefs.GetFloat("Volume", 0.7f);
         waveSpawner.PropSpawnWave(3);
         CheckForRemainingFighters();
 		int _inverse = PlayerPrefs.GetInt("InverseY");
@@ -122,6 +122,7 @@ public class SurvivalMissionStatus : MonoBehaviour
 		manualRoundsFired = playerAcHub.gunsControl.manualRoundsFired;
 		roundsHit = KillCounter.hits;
 		totalBattleTime = (int)MissionTimer;
+		if(KillCounter.currentCombo > highestCombo) { highestCombo = KillCounter.currentCombo; }
 	}
 
     void UpdateUI()
@@ -156,6 +157,14 @@ public class SurvivalMissionStatus : MonoBehaviour
             currentLockedTarget = playerAcHub.planeCam.camLockedTarget;
         }
         MapBoundaries();
+		
+		if(startingHercwave)
+		{	
+			float alpha = Mathf.Abs(Mathf.Sin(Time.time * 3f));
+			var Color = newWaveText.color;
+			Color.a = alpha;
+			newWaveText.color = Color;
+		}
 
     }
 
@@ -181,7 +190,7 @@ public class SurvivalMissionStatus : MonoBehaviour
 
         yield return new WaitForSeconds(6f);
         newWaveText.gameObject.SetActive(false);
-		yield return new WaitForSeconds(30f);
+		yield return new WaitForSeconds(45f);
         startingHercwave = false;
         yield return null;
     }
@@ -262,7 +271,7 @@ public class SurvivalMissionStatus : MonoBehaviour
             if (timerToMenu >= 10f)
             {
                 Time.timeScale = 1f;
-                SceneManager.LoadScene("SurvivalMission");
+                SceneManager.LoadScene(0);
             }
         }
     }
@@ -274,7 +283,7 @@ public class SurvivalMissionStatus : MonoBehaviour
         if (timerToMenu >= 2f)
         {
             Time.timeScale = 1f;
-            SceneManager.LoadScene("SurvivalMission");
+            SceneManager.LoadScene(1);
         }
     }
 
@@ -509,7 +518,7 @@ public class SurvivalMissionStatus : MonoBehaviour
 		{
 			PlayerPrefs.SetInt("InverseY", 1);
 		}
-		
-		analytics.SendDataCollectionEvent(totalRoundsFired, autofireRoundsFired, manualRoundsFired, roundsHit, kills, totalBattleTime, timeToFirstHighGTurn);
+		PlayerPrefs.SetFloat("Volume", bgmVolume.value);
+		analytics.SendDataCollectionEvent(totalRoundsFired, autofireRoundsFired, manualRoundsFired, roundsHit, kills, totalBattleTime, timeToFirstHighGTurn, highestCombo);
 	}
 }
